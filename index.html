@@ -26,7 +26,7 @@
     .hero {
       position: relative;
       overflow: hidden;
-      padding: 3rem 2rem 2.5rem;
+      padding: 4.5rem 2rem 3.5rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.07);
       background: #0a1628;
     }
@@ -44,7 +44,8 @@
     .hero-inner {
       position: relative;
       z-index: 1;
-      max-width: 720px;
+      width: min(960px, calc(100% - 48px));
+      max-width: 960px;
       margin: 0 auto;
     }
 
@@ -52,8 +53,8 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      margin-bottom: 1.25rem;
-      padding: 4px 12px;
+      margin-bottom: 1.5rem;
+      padding: 6px 14px;
       border: 1px solid rgba(55, 138, 221, 0.3);
       border-radius: 100px;
       background: rgba(55, 138, 221, 0.12);
@@ -69,15 +70,15 @@
 
     .wwu-badge span:last-child {
       color: #85b7eb;
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 500;
       letter-spacing: 0.04em;
     }
 
     h1 {
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
       color: #ffffff;
-      font-size: 34px;
+      font-size: 56px;
       font-weight: 600;
       line-height: 1.2;
     }
@@ -87,17 +88,17 @@
     }
 
     .hero-desc {
-      max-width: 520px;
+      max-width: 720px;
       color: #8796b3;
-      font-size: 14px;
+      font-size: 18px;
       line-height: 1.6;
     }
 
     .stat-bar {
       display: flex;
-      gap: 2rem;
-      margin-top: 1.75rem;
-      padding-top: 1.5rem;
+      gap: 3.5rem;
+      margin-top: 2.25rem;
+      padding-top: 2rem;
       border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
@@ -109,27 +110,28 @@
 
     .stat-num {
       color: #ffffff;
-      font-size: 20px;
+      font-size: 30px;
       font-weight: 600;
     }
 
     .stat-label {
       color: #4e6080;
-      font-size: 11px;
+      font-size: 13px;
       letter-spacing: 0.06em;
       text-transform: uppercase;
     }
 
     .labs-section {
-      max-width: 720px;
+      width: min(960px, calc(100% - 48px));
+      max-width: 960px;
       margin: 0 auto;
-      padding: 2rem 2rem 0;
+      padding: 2.5rem 0 0;
     }
 
     .section-label {
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
       color: #6c7d9b;
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -138,10 +140,10 @@
     .lab-card {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      min-height: 72px;
-      margin-bottom: 10px;
-      padding: 1.1rem 1.25rem;
+      gap: 1.25rem;
+      min-height: 96px;
+      margin-bottom: 14px;
+      padding: 1.35rem 1.5rem;
       border: 1px solid rgba(55, 138, 221, 0.12);
       border-radius: 10px;
       background: #0f1e33;
@@ -163,10 +165,10 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      width: 38px;
-      height: 38px;
+      width: 54px;
+      height: 54px;
       border-radius: 8px;
-      font-size: 11px;
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: 0.04em;
     }
@@ -189,9 +191,9 @@
     }
 
     .lab-tag {
-      margin-bottom: 3px;
+      margin-bottom: 5px;
       color: #60718f;
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.07em;
       text-transform: uppercase;
@@ -199,16 +201,16 @@
 
     .lab-title {
       color: #d3e0f2;
-      font-size: 14px;
+      font-size: 18px;
       font-weight: 600;
       line-height: 1.35;
     }
 
     .lab-chip {
       flex-shrink: 0;
-      padding: 3px 9px;
+      padding: 5px 12px;
       border-radius: 100px;
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 600;
       white-space: nowrap;
     }
@@ -234,7 +236,7 @@
     .arrow-icon {
       flex-shrink: 0;
       color: #3e5272;
-      font-size: 18px;
+      font-size: 22px;
       line-height: 1;
     }
 
@@ -247,9 +249,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      max-width: 720px;
+      width: min(960px, calc(100% - 48px));
+      max-width: 960px;
       margin: 2rem auto 0;
-      padding: 1.5rem 2rem 0;
+      padding: 1.5rem 0 0;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
       gap: 1rem;
     }
@@ -257,7 +260,7 @@
     .footer-text,
     .footer-logo {
       color: #4e6080;
-      font-size: 12px;
+      font-size: 14px;
     }
 
     .footer-logo {
@@ -271,11 +274,25 @@
 
     @media (max-width: 620px) {
       .hero {
-        padding: 2.25rem 1rem 2rem;
+        padding: 2.5rem 1rem 2rem;
       }
 
       .labs-section {
-        padding: 1.5rem 1rem 0;
+        width: calc(100% - 32px);
+        padding: 1.5rem 0 0;
+      }
+
+      .hero-inner,
+      .footer {
+        width: calc(100% - 32px);
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+
+      .hero-desc {
+        font-size: 16px;
       }
 
       .stat-bar {
@@ -285,6 +302,7 @@
       .lab-card {
         align-items: flex-start;
         gap: 0.85rem;
+        min-height: 82px;
         padding: 1rem;
       }
 
@@ -295,7 +313,7 @@
       .footer {
         align-items: flex-start;
         flex-direction: column;
-        padding: 1.5rem 1rem 0;
+        padding: 1.5rem 0 0;
       }
     }
   </style>
@@ -317,7 +335,7 @@
             <span class="stat-label">Labs</span>
           </div>
           <div class="stat-item">
-            <span class="stat-num">5+</span>
+            <span class="stat-num">6</span>
             <span class="stat-label">Cases</span>
           </div>
           <div class="stat-item">
