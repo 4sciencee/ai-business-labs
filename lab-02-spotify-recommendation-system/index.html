@@ -28,7 +28,7 @@
   --amber:      #f59b23;
   --r:          10px;
   --r-lg:       16px;
-  --max:        1200px;
+  --max:        1100px;
   --font:       'DM Sans', sans-serif;
   --mono:       'DM Mono', monospace;
   --serif:      'Playfair Display', serif;
@@ -61,12 +61,12 @@ nav {
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid var(--border);
-  padding: 0 2rem;
+  padding: 0 40px;
 }
 .nav-inner {
-  max-width: var(--max); margin: 0 auto;
+  width: 100%;
   display: flex; align-items: center; justify-content: space-between;
-  height: 60px; gap: 1.5rem;
+  height: 58px; gap: 1.5rem;
 }
 .nav-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
 .nav-logo svg { width: 20px; height: 20px; fill: var(--green); flex-shrink: 0; }
@@ -85,7 +85,14 @@ nav {
 .nav-back:hover { color: var(--text); }
 
 /* === HERO === */
-.hero { max-width: var(--max); margin: 0 auto; padding: 6rem 2rem 5rem; }
+.hero {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(29,185,84,0.18), transparent 35%),
+    linear-gradient(135deg, #0d0d0d 0%, #101510 56%, #071107 100%);
+  border-bottom: 1px solid rgba(29,185,84,0.18);
+  padding: 120px 0 100px;
+}
+.hero-inner { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   background: rgba(29,185,84,0.09); border: 1px solid rgba(29,185,84,0.22);
@@ -158,7 +165,7 @@ nav {
 .stat-label { font-size: 12px; color: var(--text2); margin-top: 7px; line-height: 1.4; }
 
 /* === SECTION SCAFFOLD === */
-.section { max-width: var(--max); margin: 0 auto; padding: 5rem 2rem; }
+.section { max-width: var(--max); margin: 0 auto; padding: 5rem 40px; }
 .section-hd { margin-bottom: 2.75rem; }
 .label {
   font-size: 10px; font-weight: 600; color: var(--green);
@@ -494,11 +501,13 @@ footer {
   .connect-banner { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 600px) {
+  nav { padding: 0 20px; }
   .nav-links { display: none; }
   .nav-back { display: none; }
   .stats-inner { grid-template-columns: repeat(2,1fr); }
-  .hero { padding: 4rem 1.25rem 3rem; }
-  .section { padding: 3.5rem 1.25rem; }
+  .hero { padding: 4rem 20px 3rem; }
+  .hero-inner { padding: 0; }
+  .section { padding: 3.5rem 20px; }
   .system-inner { padding: 2.5rem 1.25rem; }
   footer { padding: 2rem 1.25rem; }
   .btn-group { gap: 3px; }
@@ -530,25 +539,27 @@ footer {
   HERO
 ============================================================ -->
 <section class="hero">
-  <div class="hero-eyebrow">
-    <span class="dot" aria-hidden="true"></span>
-    Lab 02 - Canvas Lab #3 - MIS 432
-  </div>
-  <h1>Spotify-Style <em>Recommendation</em> System</h1>
-  <p class="hero-sub">An applied AI system that uses behavioral data, collaborative filtering, clustering, and similarity scoring to generate real-time music recommendations.</p>
-  <div class="hero-tags">
-    <span class="hero-tag">Python - Pandas - scikit-learn</span>
-    <span class="hero-tag">Collaborative Filtering</span>
-    <span class="hero-tag">K-Means Clustering</span>
-    <span class="hero-tag">Cosine Similarity</span>
-    <span class="hero-tag">Spotify Web API</span>
-  </div>
-  <div class="hero-actions">
-    <a href="#system" class="btn-green">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-      Try the live system
-    </a>
-    <a href="#story" class="btn-outline">Read the story</a>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="dot" aria-hidden="true"></span>
+      Lab 02 - Canvas Lab #3 - MIS 432
+    </div>
+    <h1>Spotify-Style <em>Recommendation</em> System</h1>
+    <p class="hero-sub">An applied AI system that uses behavioral data, collaborative filtering, clustering, and similarity scoring to generate real-time music recommendations.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">Python - Pandas - scikit-learn</span>
+      <span class="hero-tag">Collaborative Filtering</span>
+      <span class="hero-tag">K-Means Clustering</span>
+      <span class="hero-tag">Cosine Similarity</span>
+      <span class="hero-tag">Spotify Web API</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#system" class="btn-green">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        Try the live system
+      </a>
+      <a href="#story" class="btn-outline">Read the story</a>
+    </div>
   </div>
 </section>
 
