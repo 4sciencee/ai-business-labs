@@ -1,4 +1,4 @@
-## Labs
+## Applied AI Projects
 
 - Lab 01: Netflix Artwork A/B Testing 
 - Lab 02: Spotify-Style Recommendation System and Wrapped
