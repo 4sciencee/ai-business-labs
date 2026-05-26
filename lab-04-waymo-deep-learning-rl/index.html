@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carlos Palomares: Waymo Strategy Analysis</title>
+<title>Waymo Strategy Analysis | MIS 432</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
 
@@ -33,10 +33,54 @@
     font-size: 16px;
   }
 
+  .top-nav {
+    background: rgba(26, 26, 46, 0.96);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .top-nav-inner {
+    max-width: 860px;
+    height: 58px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+  }
+
+  .top-brand,
+  .top-back {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .top-brand { color: var(--white); }
+  .top-brand span { color: var(--green); }
+  .top-back { color: rgba(255,255,255,0.62); transition: color 0.18s; }
+  .top-back:hover { color: var(--white); }
+
+  .top-meta {
+    font-family: 'DM Mono', monospace;
+    color: rgba(255,255,255,0.42);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
   .site-header {
     background: var(--ink);
     color: var(--white);
-    padding: 72px 0 60px;
+    padding: 82px 0 64px;
     position: relative;
     overflow: hidden;
   }
@@ -76,19 +120,28 @@
 
   .header-name {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(36px, 6vw, 56px);
-    line-height: 1.1;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.05;
     color: var(--white);
-    margin-bottom: 8px;
+    margin-bottom: 12px;
   }
 
   .header-subtitle {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(16px, 2.5vw, 22px);
-    color: rgba(255,255,255,0.55);
+    font-size: clamp(17px, 2.5vw, 24px);
+    color: rgba(255,255,255,0.62);
     font-style: italic;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     line-height: 1.4;
+  }
+
+  .header-meta {
+    font-family: 'DM Mono', monospace;
+    color: rgba(255,255,255,0.46);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
   }
 
   .header-intro {
@@ -104,7 +157,7 @@
     border-bottom: 1px solid var(--gray-border);
     padding: 16px 0;
     position: sticky;
-    top: 0;
+    top: 58px;
     z-index: 100;
   }
 
@@ -415,12 +468,21 @@
 </head>
 <body>
 
+<nav class="top-nav" aria-label="Site navigation">
+  <div class="top-nav-inner">
+    <a class="top-brand" href="../"><span>AI Business</span> Labs</a>
+    <div class="top-meta">Lab 04 - MIS 432</div>
+    <a class="top-back" href="../">Back to Labs</a>
+  </div>
+</nav>
+
 <header class="site-header">
   <div class="container">
-    <p class="header-eyebrow">Strategy Portfolio: Simulated Case Study</p>
-    <h1 class="header-name">Carlos Palomares</h1>
-    <p class="header-subtitle">Waymo Strategy Analysis: A Case Study in Applied AI Decision-Making</p>
-    <p class="header-intro">Over six structured steps, I worked through a simulated strategy analyst assignment at Waymo. The project started with how neural networks actually learn and ended with a city-launch recommendation backed by dataset choices, reward function design, and a social-license plan. Each step produced a real deliverable. This page documents the work.</p>
+    <p class="header-eyebrow">Lab 04 - Canvas Lab #5 - MIS 432</p>
+    <h1 class="header-name">Waymo Strategy Analysis</h1>
+    <p class="header-subtitle">Deep Learning, Reinforcement Learning, and Autonomous Vehicle Strategy</p>
+    <p class="header-meta">Carlos Palomares - Western Washington University</p>
+    <p class="header-intro">Over six structured steps, I worked through a simulated strategy analyst assignment at Waymo. The project started with how neural networks learn and ended with a city-launch recommendation backed by dataset choices, reward function design, and a social-license plan.</p>
   </div>
 </header>
 
