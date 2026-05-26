@@ -4,7 +4,7 @@ Western Washington University MIS 432 coursework repository featuring applied AI
 
 ## Applied AI Projects
 
-- Lab 01: Netflix Artwork A/B Testing (Canvas Lab #2) - not yet added
+- Lab 01: Netflix Artwork A/B Testing (Canvas Lab #2)
 - Lab 02: Spotify-Style Recommendation System and Wrapped (Canvas Lab #3)
 - Lab 03: Forecasting and the Uber Factory (Canvas Lab #4)
 - Lab 04: Deep Learning, Reinforcement Learning, and Waymo (Canvas Lab #5)

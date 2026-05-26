@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Netflix A/B Testing Lab | MIS 432</title>
+  <style>
+
+    /* ── Base Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+      background-color: #141414;
+      color: #e5e5e5;
+      line-height: 1.7;
+    }
+
+    /* ── Hero Banner ── */
+    .hero {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d0000 60%, #E50914 100%);
+      padding: 70px 40px 50px;
+      text-align: center;
+      border-bottom: 3px solid #E50914;
+    }
+
+    .hero .label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #E50914;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 span { color: #E50914; }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #b3b3b3;
+      max-width: 680px;
+      margin: 0 auto 22px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #E50914;
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── Main Container ── */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 50px 24px 80px;
+    }
+
+    /* ── Section Titles ── */
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+      border-left: 4px solid #E50914;
+      padding-left: 14px;
+      margin: 50px 0 18px;
+    }
+
+    p { color: #c8c8c8; margin-bottom: 14px; }
+
+    /* ── Stat Cards Row ── */
+    .stats-row {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin: 30px 0;
+    }
+
+    .stat-card {
+      flex: 1;
+      min-width: 160px;
+      background: #1f1f1f;
+      border: 1px solid #2e2e2e;
+      border-top: 3px solid #E50914;
+      border-radius: 8px;
+      padding: 22px 18px;
+      text-align: center;
+    }
+
+    .stat-card .number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #E50914;
+    }
+
+    .stat-card .desc {
+      font-size: 0.82rem;
+      color: #888;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── AI Factory Pipeline ── */
+    .pipeline {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 24px 0;
+    }
+
+    .pipe-step {
+      background: #1f1f1f;
+      border: 1px solid #333;
+      border-radius: 6px;
+      padding: 12px 18px;
+      text-align: center;
+      flex: 1;
+      min-width: 100px;
+    }
+
+    .pipe-step .pipe-label {
+      font-size: 0.7rem;
+      color: #E50914;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+    }
+
+    .pipe-step .pipe-value {
+      font-size: 0.88rem;
+      color: #ddd;
+      margin-top: 5px;
+    }
+
+    .pipe-arrow {
+      font-size: 1.4rem;
+      color: #555;
+    }
+
+    /* ── Result Charts ── */
+    .chart-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 28px 0;
+    }
+
+    @media (max-width: 680px) { .chart-grid { grid-template-columns: 1fr; } }
+
+    .chart-card {
+      background: #1c1c1c;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .chart-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .chart-caption {
+      padding: 12px 16px;
+      font-size: 0.82rem;
+      color: #777;
+      border-top: 1px solid #2a2a2a;
+    }
+
+    /* ── Decision Box ── */
+    .decision-box {
+      background: linear-gradient(135deg, #0d2e0d, #1a1a1a);
+      border: 1px solid #2ecc71;
+      border-left: 5px solid #2ecc71;
+      border-radius: 10px;
+      padding: 28px 28px;
+      margin: 28px 0;
+    }
+
+    .decision-box h3 {
+      color: #2ecc71;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .decision-box p { color: #c8c8c8; }
+
+    /* ── Impact Table ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.92rem;
+    }
+
+    th {
+      background: #1f1f1f;
+      color: #E50914;
+      text-align: left;
+      padding: 12px 16px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 2px solid #333;
+    }
+
+    td {
+      padding: 11px 16px;
+      border-bottom: 1px solid #272727;
+      color: #ccc;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #1e1e1e; }
+
+    .highlight { color: #2ecc71; font-weight: 700; }
+
+    /* ── Concept Cards ── */
+    .concept-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 24px 0;
+    }
+
+    @media (max-width: 600px) { .concept-grid { grid-template-columns: 1fr; } }
+
+    .concept-card {
+      background: #1c1c1c;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .concept-card h4 {
+      color: #E50914;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .concept-card p { font-size: 0.9rem; color: #aaa; margin: 0; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.8rem;
+      color: #555;
+      border-top: 1px solid #222;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ── Hero ── -->
+  <div class="hero">
+    <div class="label">MIS 432 · Lab #2</div>
+    <h1>Netflix <span>A/B Testing</span> Lab</h1>
+    <p>
+      A simplified simulation of Netflix's artwork experimentation system —
+      built to demonstrate how organizations use data to close the
+      prediction-decision gap.
+    </p>
+    <span class="badge">Experimentation &amp; Decision-Making in AI Systems</span>
+  </div>
+
+  <div class="container">
+
+    <!-- ── Overview ── -->
+    <div class="section-title">Experiment Overview</div>
+    <p>
+      Netflix has over 300 million subscribers and thousands of titles. When a user
+      opens the app, they have roughly <strong style="color:#fff">90 seconds</strong>
+      to find something before abandoning the session. The single biggest factor
+      in whether a user clicks a title is the <strong style="color:#fff">artwork</strong> —
+      the thumbnail image associated with it.
+    </p>
+    <p>
+      In this lab, 1,000 simulated users were randomly assigned to see either
+      <strong style="color:#E50914">Artwork A</strong> (control) or
+      <strong style="color:#fff">Artwork B</strong> (treatment).
+      Click behavior was simulated based on known probabilities,
+      and a statistical test was used to determine whether the observed
+      performance difference was real or due to chance.
+    </p>
+
+    <!-- ── Key Stats ── -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="number">1,000</div>
+        <div class="desc">Simulated Users</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">24%</div>
+        <div class="desc">Artwork A CTR</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">30%</div>
+        <div class="desc">Artwork B CTR</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">+25%</div>
+        <div class="desc">Lift (B vs A)</div>
+      </div>
+    </div>
+
+    <!-- ── Results ── -->
+    <div class="section-title">Experiment Results</div>
+    <div class="chart-grid">
+      <div class="chart-card">
+        <img src="results/ctr_comparison.png" alt="CTR Comparison Chart" />
+        <div class="chart-caption">
+          Figure 1 — Click-Through Rate comparison between Artwork A (control)
+          and Artwork B (treatment).
+        </div>
+      </div>
+      <div class="chart-card">
+        <img src="results/significance_test.png" alt="Statistical Significance Chart" />
+        <div class="chart-caption">
+          Figure 2 — P-value vs. significance threshold (α = 0.05).
+          A p-value below 0.05 confirms the result is statistically significant.
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Statistical Test ── -->
+    <div class="section-title">Statistical Test</div>
+    <p>
+      A <strong style="color:#fff">Chi-Square Test</strong> was used to evaluate
+      whether the difference in CTR between the two groups was statistically
+      significant or likely due to random chance.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Value</th>
+          <th>Interpretation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Test Used</td>
+          <td>Chi-Square</td>
+          <td>Compares click counts across two groups</td>
+        </tr>
+        <tr>
+          <td>Significance Threshold (α)</td>
+          <td>0.05</td>
+          <td>Industry standard — 5% chance tolerance</td>
+        </tr>
+        <tr>
+          <td>P-Value</td>
+          <td class="highlight">&lt; 0.05</td>
+          <td>Result is statistically significant</td>
+        </tr>
+        <tr>
+          <td>Conclusion</td>
+          <td class="highlight">Significant ✅</td>
+          <td>Difference is real, not due to chance</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ── Decision ── -->
+    <div class="section-title">Business Decision</div>
+    <div class="decision-box">
+      <h3>✅ Recommendation: Deploy Artwork B Platform-Wide</h3>
+      <p>
+        The experiment confirmed that Artwork B produced a statistically significant
+        improvement in click-through rate over Artwork A — a 6 percentage point
+        increase representing a <strong>+25% lift</strong>. The p-value fell well
+        below the 0.05 threshold, meaning this result is unlikely to be due to
+        random chance. Netflix should immediately deploy Artwork B as the default
+        artwork for this title across all users.
+      </p>
+    </div>
+
+    <!-- ── Projected Impact ── -->
+    <div class="section-title">Projected Business Impact at Netflix Scale</div>
+    <table>
+      <thead>
+        <tr><th>Metric</th><th>Value</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Netflix Subscribers</td><td>300,000,000</td></tr>
+        <tr><td>Est. Daily Impressions (10%)</td><td>30,000,000</td></tr>
+        <tr><td>CTR Improvement (A → B)</td><td>+6 percentage points</td></tr>
+        <tr><td>Projected Extra Clicks / Day</td><td class="highlight">~1,800,000</td></tr>
+      </tbody>
+    </table>
+
+    <!-- ── AI Factory ── -->
+    <div class="section-title">AI Factory Connection</div>
+    <p>
+      This experiment maps directly to the AI Factory framework — the model through
+      which organizations convert raw data into measurable business value.
+    </p>
+    <div class="pipeline">
+      <div class="pipe-step">
+        <div class="pipe-label">Data</div>
+        <div class="pipe-value">1,000 simulated user clicks</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step">
+        <div class="pipe-label">Model</div>
+        <div class="pipe-value">Chi-Square statistical test</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step">
+        <div class="pipe-label">Prediction</div>
+        <div class="pipe-value">Artwork B has higher CTR</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step">
+        <div class="pipe-label">Decision</div>
+        <div class="pipe-value">Deploy Artwork B</div>
+      </div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step">
+        <div class="pipe-label">Value</div>
+        <div class="pipe-value">~1.8M extra clicks/day</div>
+      </div>
+    </div>
+
+    <!-- ── Key Concepts ── -->
+    <div class="section-title">Key Concepts Demonstrated</div>
+    <div class="concept-grid">
+      <div class="concept-card">
+        <h4>Prediction-Decision Gap</h4>
+        <p>A model can predict which artwork might perform better — but only
+        experimentation provides the evidence needed to act on that prediction
+        with confidence at scale.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Randomization</h4>
+        <p>Users were randomly assigned to groups so any difference in clicks
+        can be attributed to the artwork itself — not to who the users are.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Statistical Significance</h4>
+        <p>A p-value below 0.05 confirms the CTR difference is real. Without
+        this test, acting on the data would be guesswork, not evidence.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Explore vs. Exploit</h4>
+        <p>The experiment phase (explore) tested both options. Deploying the
+        winner platform-wide is the exploit phase — using what works to
+        maximize outcomes.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    MIS 432 · Lab #2 · Experimentation and Decision-Making in AI Systems
+  </footer>
+
+</body>
+</html>
