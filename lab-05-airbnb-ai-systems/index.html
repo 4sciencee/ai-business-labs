@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carlos Palomares | Airbnb AI Systems Analysis</title>
+  <style>
+    :root {
+      --airbnb: #ff5a5f;
+      --airbnb-dark: #d94246;
+      --ink: #222222;
+      --muted: #666666;
+      --soft: #f7f7f7;
+      --line: #e8e8e8;
+      --card: #ffffff;
+      --cream: #fff4f4;
+      --green: #2f7d4f;
+      --green-bg: #eaf6ef;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: #fbfbfb;
+      line-height: 1.65;
+    }
+
+    header {
+      background: linear-gradient(135deg, #222222 0%, #343434 60%, #3b1f20 100%);
+      color: white;
+      padding: 72px 28px 64px;
+    }
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    .eyebrow {
+      display: inline-block;
+      color: #ffd6d8;
+      background: rgba(255,90,95,0.16);
+      border: 1px solid rgba(255,90,95,0.35);
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.05;
+      max-width: 850px;
+      letter-spacing: -0.03em;
+    }
+    h1 span { color: var(--airbnb); }
+    .subtitle {
+      margin-top: 18px;
+      color: rgba(255,255,255,0.72);
+      font-size: 16px;
+    }
+    .hero-grid {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+    .hero-pill {
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.82);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      overflow-x: auto;
+      padding: 0 20px;
+      gap: 4px;
+    }
+    .nav-inner a {
+      color: #555;
+      text-decoration: none;
+      font-size: 13px;
+      padding: 14px 12px;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-inner a:hover {
+      color: var(--airbnb);
+      border-bottom-color: var(--airbnb);
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 42px 24px 80px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 315px;
+      gap: 30px;
+      align-items: start;
+    }
+    main { min-width: 0; }
+    aside { position: sticky; top: 72px; }
+
+    .summary, .card, .sidebar-card, .verdict-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+    .summary {
+      padding: 30px;
+      margin-bottom: 28px;
+      border-left: 5px solid var(--airbnb);
+      background: linear-gradient(135deg, var(--cream), white 65%);
+    }
+    .label {
+      font-size: 12px;
+      color: var(--airbnb);
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .summary p { margin: 0; color: #333; }
+
+    .card {
+      padding: 28px;
+      margin-bottom: 26px;
+      scroll-margin-top: 70px;
+    }
+    .card-header {
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 20px;
+    }
+    .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--cream);
+      color: var(--airbnb);
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      flex: 0 0 auto;
+    }
+    .module {
+      color: #888;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    h2 {
+      margin: 0;
+      font-size: 25px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+    h3 {
+      margin: 20px 0 8px;
+      font-size: 17px;
+    }
+    p { color: #4b4b4b; margin: 0 0 14px; }
+    strong { color: #222; }
+    .highlight { color: var(--airbnb-dark); font-weight: 700; }
+
+    .analysis {
+      background: #f8f8f8;
+      border: 1px solid #eeeeee;
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .analysis .analysis-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .analysis p:last-child { margin-bottom: 0; }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 18px 0;
+    }
+    .metric {
+      background: var(--cream);
+      border: 1px solid #ffd7d9;
+      border-radius: 14px;
+      padding: 17px;
+    }
+    .metric .num {
+      color: var(--airbnb-dark);
+      font-weight: 800;
+      font-size: 25px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .metric .txt { color: #666; font-size: 12.5px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    th {
+      background: #222;
+      color: white;
+      text-align: left;
+      padding: 12px;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    td {
+      padding: 12px;
+      border-bottom: 1px solid var(--line);
+      color: #444;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #fcfcfc; }
+    .badge {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .booked { background: var(--green-bg); color: var(--green); }
+    .empty { background: #fdecea; color: #b3261e; }
+
+    .quote-box, .listing-box {
+      border-radius: 14px;
+      padding: 20px;
+      margin: 16px 0;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .quote-box h4, .listing-box h4 { margin: 0 0 10px; font-size: 15px; }
+    .listing-box {
+      background: linear-gradient(135deg, #222, #373737);
+      color: white;
+      border: 0;
+    }
+    .listing-box h4 { color: white; font-size: 18px; }
+    .listing-box p { color: rgba(255,255,255,0.78); }
+
+    .breakdown {
+      background: #f8f8f8;
+      border: 1px solid #eeeeee;
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+    .breakdown div {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      border-bottom: 1px solid #e7e7e7;
+      padding: 9px 0;
+      color: #555;
+    }
+    .breakdown div:last-child { border-bottom: 0; }
+    .plus { color: var(--green); font-weight: 700; }
+    .minus { color: #b3261e; font-weight: 700; }
+    .result { color: var(--airbnb-dark); font-weight: 800; }
+
+    .city-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 17px 0;
+    }
+    .city {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      background: #fff;
+    }
+    .city strong { display: block; margin-bottom: 4px; }
+    .city span { color: #666; font-size: 13.5px; }
+
+    .finance {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 18px 0;
+    }
+    .finance div {
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid var(--line);
+    }
+    .finance .airbnb { background: var(--cream); border-color: #ffd7d9; }
+    .finance .longterm { background: var(--green-bg); border-color: #ccebd7; }
+    .finance b { display: block; font-size: 30px; line-height: 1; margin: 8px 0; }
+    .airbnb b { color: var(--airbnb-dark); }
+    .longterm b { color: var(--green); }
+    .finance span { font-size: 12.5px; color: #666; }
+
+    .sidebar-card { padding: 24px; margin-bottom: 18px; background: #222; color: white; }
+    .sidebar-card h3 { color: white; margin-top: 0; }
+    .finding {
+      display: flex;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .finding:last-child { border-bottom: 0; }
+    .finding-num {
+      background: var(--airbnb);
+      color: white;
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 800;
+      flex: 0 0 auto;
+    }
+    .finding p { color: rgba(255,255,255,0.78); font-size: 13.5px; margin: 0; }
+    .verdict-card {
+      padding: 24px;
+      background: linear-gradient(135deg, var(--airbnb), var(--airbnb-dark));
+      color: white;
+      border: 0;
+    }
+    .verdict-card .small {
+      font-size: 12px;
+      opacity: .78;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .verdict-card h3 { margin: 0 0 10px; color: white; }
+    .verdict-card p { color: rgba(255,255,255,.83); font-size: 13.5px; margin: 0; }
+
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 42px 20px;
+    }
+    footer p { color: rgba(255,255,255,.65); margin: 6px 0; }
+    footer a { color: #ffd6d8; }
+
+    @media (max-width: 900px) {
+      .page { grid-template-columns: 1fr; }
+      aside { position: static; order: -1; }
+      .metric-row, .city-grid, .finance { grid-template-columns: 1fr; }
+      .card { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hero">
+      <div class="eyebrow">Valencia, Spain · Portfolio Case Study</div>
+      <h1>Airbnb AI Systems Analysis:<br><span>New Host Evaluation</span></h1>
+      <div class="subtitle">Carlos Palomares · MIS 432 · AI in Business · Western Washington University</div>
+      <div class="hero-grid">
+        <div class="hero-pill">7 Evaluation Modules</div>
+        <div class="hero-pill">AI Systems + Business Risk</div>
+        <div class="hero-pill">Final Recommendation: Long-Term Rental</div>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#summary">Summary</a>
+      <a href="#matching">Matching</a>
+      <a href="#positioning">Positioning</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#support">Support</a>
+      <a href="#genai">GenAI Audit</a>
+      <a href="#regulation">Regulation</a>
+      <a href="#recommendation">Recommendation</a>
+    </div>
+  </nav>
+
+  <div class="page">
+    <main>
+      <section id="summary" class="summary">
+        <div class="label">Executive Summary</div>
+        <p>This case study looks at how Airbnb’s AI systems would affect a new host listing a 2-bedroom apartment in Ruzafa, Valencia. I evaluated the matching system, behavior-based clustering, Smart Pricing, support explainability, GenAI listing content, regulatory risk, and the final business recommendation. The main finding is that Airbnb’s tools can help with visibility, pricing, and guest targeting, but they do not remove the bigger financial and regulatory risks. Under Valencia’s 90-day cap, Airbnb would bring in about <strong>€8,820/year</strong>, compared to <strong>€10,800/year</strong> from a long-term tenant, so long-term renting is the stronger option.</p>
+      </section>
+
+      <section id="matching" class="card">
+        <div class="card-header"><div class="icon">🔎</div><div><div class="module">Module 01</div><h2>Matching System Evaluation</h2></div></div>
+        <p>The matching exercise was harder than I expected because the guests and listings did not line up in a simple way. A listing could have a central location, nice photos, or a rooftop, but those features could appeal to different types of guests. For example, a rooftop could fit a couple looking for a romantic trip, but it could also appeal to someone who just wants a comfortable place to relax after exploring the city.</p>
+        <p>The difficult part was figuring out what each guest cared about most. The descriptions did not always make it clear whether price, location, space, amenities, or atmosphere mattered more. Airbnb’s AI has an advantage because it is not only relying on listing descriptions. It uses behavioral data, such as what guests click, search, save, skip, and book. That matters because people do not always describe what they want clearly, but their actions show patterns over time.</p>
+        <div class="analysis"><div class="analysis-title">My Analysis</div><p>For a new host, the main takeaway is that Airbnb could help the listing reach the right guests, but the host would not fully control that process. Photos, price, title, and description can all be improved, but the platform still decides who actually sees the listing. As a new host with few reviews, the listing may not have many booking signals yet, which could make visibility harder at first. This is similar to TikTok or Instagram: strong content can help, but the algorithm still controls a lot of the reach.</p></div>
+      </section>
+
+      <section id="positioning" class="card">
+        <div class="card-header"><div class="icon">📍</div><div><div class="module">Module 02</div><h2>Embedding & Positioning Analysis</h2></div></div>
+        <p>I recommend positioning the apartment as a <strong>romantic getaway listing</strong>. Based on the cluster analysis, which groups listings by guest behavior, the real competitors are not just other 2-bedroom apartments in Ruzafa. The closest competitors are listings that attract the same type of guest, such as the elegant flat in the historic quarter (€110/night), the penthouse (€130/night), and the boutique studio (€58/night).</p>
+        <div class="metric-row"><div class="metric"><div class="num">€98</div><div class="txt">Expected nightly rate</div></div><div class="metric"><div class="num">€110</div><div class="txt">Elegant flat competitor</div></div><div class="metric"><div class="num">€58</div><div class="txt">Boutique studio competitor</div></div></div>
+        <p>This positioning makes sense because the apartment already has features that fit couples and weekend travelers. The rooftop terrace, Ruzafa restaurant district, nearby beach, and extra bedroom make it a good fit for anniversaries, short getaways, and cultural trips. These features support the romantic getaway strategy better than a family-focused or remote-work setup.</p>
+        <div class="analysis"><div class="analysis-title">My Analysis</div><p>The main risk is that focusing on couples could make the listing less appealing to digital nomads or families. That could hurt during slower seasons if couples are not booking as much. To reduce this risk, the listing should still mention fast Wi-Fi, the desk, and the extra bedroom, but keep the main focus on the romantic stay experience.</p></div>
+      </section>
+
+      <section id="pricing" class="card">
+        <div class="card-header"><div class="icon">💶</div><div><div class="module">Module 03</div><h2>Smart Pricing Evaluation</h2></div></div>
+        <p>Smart Pricing should be used as a guide, but not as an automatic final decision. After conducting the pricing analysis, the findings showed that Smart Pricing generated <strong>€258</strong>, compared to <strong>€241</strong> from my manual pricing choices, so it performed slightly better overall.</p>
+        <table>
+          <thead><tr><th>Scenario</th><th>Smart Pricing</th><th>Manual Override</th><th>Outcome</th></tr></thead>
+          <tbody>
+            <tr><td>Normal weekday</td><td>€85</td><td>€66</td><td><span class="badge booked">Both booked</span></td></tr>
+            <tr><td>Weekend</td><td>€115</td><td>€100</td><td><span class="badge booked">Both booked</span></td></tr>
+            <tr><td>Festival week</td><td>€145</td><td>€129</td><td><span class="badge empty">Neither booked</span></td></tr>
+            <tr><td>Last-minute vacancy</td><td>€62</td><td>€40</td><td><span class="badge empty">Neither booked</span></td></tr>
+            <tr><td>Winter low season</td><td>€58</td><td>€75</td><td><span class="badge booked">Manual booked</span></td></tr>
+          </tbody>
+        </table>
+        <p>It handled the normal weekday and weekend scenarios well because the higher Smart Pricing rates still would have booked. Manual pricing can still be useful when local knowledge or a specific goal matters. In the festival and last-minute scenarios, lowering the price did not create demand. In the winter low season, overriding the suggested price to €75 led to a booking while the €58 Smart Pricing suggestion would not have.</p>
+        <div class="analysis"><div class="analysis-title">My Analysis</div><p>The main concern is that Smart Pricing also benefits Airbnb because the platform earns money when bookings happen. Because of that, Smart Pricing should be treated as supporting evidence, not the final answer. Even if Smart Pricing helps with individual nights, Airbnb under the 90-day cap would make about €8,820/year, while a long-term tenant at €900/month would make €10,800/year. Long-term renting is still financially stronger.</p></div>
+      </section>
+
+      <section id="support" class="card">
+        <div class="card-header"><div class="icon">💬</div><div><div class="module">Module 04</div><h2>Support Escalation Response</h2></div></div>
+        <p>This section looks at how to explain a Smart Pricing decision to a frustrated host. Maria was upset because her Saturday rate dropped to €62, even though Saturday is usually a strong night. The hybrid model breakdown made the issue easier to explain because it showed which factors changed the final price.</p>
+        <div class="breakdown"><div><span>Base rate</span><span class="plus">€82</span></div><div><span>Saturday premium</span><span class="plus">+€18</span></div><div><span>Winter season</span><span class="minus">−€15</span></div><div><span>Last-minute booking date</span><span class="minus">−€18</span></div><div><span>Oversupply: 38 of 62 listings empty</span><span class="minus">−€5</span></div><div><span>Suggested rate</span><span class="result">€62</span></div></div>
+        <div class="quote-box"><h4>Direct response to Maria</h4><p>Hi Maria, I understand why this feels frustrating, especially since Saturday is usually a strong night. Your rate started at €82 and Smart Pricing added €18 for Saturday. But winter season lowered it by €15, the booking being tomorrow lowered it by €18, and 38 of 62 similar listings still being empty lowered it by another €5. That is why the suggested rate dropped to €62. Smart Pricing is only a suggestion, so you can override it anytime.</p></div>
+        <div class="quote-box"><h4>Reusable support template</h4><p>Hi [Host Name], I understand why this price change is frustrating. When Smart Pricing lowers a rate, it can feel like the system is working against you.</p><p>Smart Pricing looks at six main inputs: base rate, season, day of week, lead time, local events, and supply. The base rate is the starting point. Season adjusts for busy or slow travel periods. Day of week accounts for stronger or weaker nights. Lead time looks at how soon the booking date is. Events can raise demand if something is happening nearby. Supply looks at how many similar listings are still available.</p><p>Smart Pricing is a recommendation, not a rule. It works well when demand patterns are changing quickly, but it may make sense to override it when there is local knowledge, a minimum rate to protect, or a different business goal.</p></div>
+        <div class="analysis"><div class="analysis-title">My Analysis</div><p>The useful part of this exercise was seeing the difference between “why did the price drop?” and “should I lower my price?” The AI can explain the pricing factors, but it cannot fully decide what the host should value more. This matters because AI systems can support decision-making, but they should not completely replace human judgment.</p></div>
+      </section>
+
+      <section id="genai" class="card">
+        <div class="card-header"><div class="icon">✍️</div><div><div class="module">Module 05</div><h2>GenAI Content Audit</h2></div></div>
+        <p>In this step, I used GenAI to draft an Airbnb listing, then audited and revised the output. The first draft included the correct apartment facts, but it felt too broad and practical. It did not fully match the romantic getaway setup from the positioning analysis.</p>
+        <div class="listing-box"><h4>Romantic Ruzafa Stay with Rooftop Views</h4><p>Set in the heart of Ruzafa’s restaurant district, this relaxed 2-bedroom apartment is a good fit for couples, anniversaries, or a quiet Valencia getaway. Walk out for dinner, wine, brunch, or late-night tapas, then come back to the rooftop terrace for city views before bed. The beach is about a 10-minute walk away, so it is easy to mix seaside time with evenings in the city.</p><p>Inside, there is one bathroom, a recently renovated kitchen, fast Wi-Fi, and a dedicated desk if you need to check in on work briefly. The second bedroom gives extra space to unpack or travel with another couple. Fits 2–4 guests and is available year-round. Please note there is no parking and no pool.</p></div>
+        <div class="analysis"><div class="analysis-title">My Analysis</div><p>The biggest difference between the AI’s first draft and my edited final version was the target audience. I changed the listing to focus more on couples, anniversaries, weekend trips, restaurants, wine, tapas, the rooftop terrace, and city views. I also kept the real details like the renovated kitchen, fast Wi-Fi, desk, no parking, and no pool, so the description stayed honest and did not overpromise.</p><p>I did not just accept the first draft because AI-generated content can be correct but still not be the best version for the situation. In a job, this matters even more because if my name is on the work, I am still responsible for what it says. AI can help create a draft, but I still need to review it and make sure it fits the purpose.</p></div>
+      </section>
+
+      <section id="regulation" class="card">
+        <div class="card-header"><div class="icon">🏛️</div><div><div class="module">Module 06</div><h2>Regulatory Risk Assessment</h2></div></div>
+        <p>Regulatory risk should be treated as a major part of this decision, not just a side issue. After reviewing the city data, the findings showed that Valencia’s 90-day annual cap changes the Airbnb option a lot. At the expected rate of €98/night, Airbnb would make about €8,820/year if all 90 allowed nights were booked. A long-term tenant at €900/month would make €10,800/year. This means Airbnb would already make €1,980 less, before including cleaning, supplies, vacancy risk, platform fees, and management time.</p>
+        <div class="finance"><div class="airbnb"><span>Airbnb under 90-day cap</span><b>€8,820</b><span>Assumes all 90 nights book</span></div><div class="longterm"><span>Long-term rental</span><b>€10,800</b><span>€900/month for 12 months</span></div></div>
+        <p>The bigger concern is that regulation seems to be moving in a stricter direction. Valencia already has about 28,000 Airbnb listings, 3.2% of housing on Airbnb, and rent has gone up 38% since 2019. Other cities show the same pattern.</p>
+        <div class="city-grid"><div class="city"><strong>Valencia</strong><span>90-day cap, 28,000 listings, rent up 38% since 2019.</span></div><div class="city"><strong>Barcelona</strong><span>Phasing out 10,000 short-term rental licenses by 2028.</span></div><div class="city"><strong>Mexico City</strong><span>180-day annual cap.</span></div><div class="city"><strong>Berlin</strong><span>Strict permits with a 90-day cap.</span></div></div>
+        <div class="analysis"><div class="analysis-title">My Analysis</div><p>A tighter cap would make Airbnb even weaker financially. If Valencia lowered the cap to 60 days, Airbnb revenue would fall to €5,880/year, which is €4,920 less than long-term renting. If short-term rentals were banned or the permit was not renewed, Airbnb revenue could fall to zero. Because of that, long-term renting is the stronger option. Airbnb still offers flexibility, but long-term renting gives higher expected income, less uncertainty, and less risk from future policy changes.</p></div>
+      </section>
+
+      <section id="recommendation" class="card">
+        <div class="card-header"><div class="icon">✅</div><div><div class="module">Module 07</div><h2>Final Recommendation</h2></div></div>
+        <p><strong>Long-term renting is the best option for the apartment.</strong></p>
+        <p>The main reason is the financial difference. With Valencia’s 90-day annual cap, Airbnb would only bring in about €8,820 per year at the €98 average nightly rate. A long-term tenant paying €900 per month would bring in €10,800 per year. That means long-term renting would make €1,980 more before even including Airbnb costs like cleaning, supplies, repairs, empty nights, and the time it takes to manage guests.</p>
+        <p>Long-term renting also seems more practical and less risky. Airbnb’s tools can help with behavior-based matching, Smart Pricing, and listing visibility, but the host would still be relying on Airbnb’s algorithm, reviews, search ranking, and platform rules. If Valencia becomes stricter with short-term rentals, Airbnb could become even less reliable as an income source.</p>
+        <p>By not choosing Airbnb, the host gives up the chance to earn more per night during busy travel periods and loses some flexibility to use the apartment between guest stays. A hybrid approach could work if personal flexibility matters more. However, if the main goal is steady income with lower risk, long-term renting is the better choice.</p>
+      </section>
+    </main>
+
+    <aside>
+      <div class="sidebar-card">
+        <h3>Key Findings</h3>
+        <div class="finding"><div class="finding-num">1</div><p>Airbnb’s AI can improve matching by using behavioral data, but the host gives up control over visibility.</p></div>
+        <div class="finding"><div class="finding-num">2</div><p>Romantic getaway positioning creates a clear guest segment, but it also changes who the real competitors are.</p></div>
+        <div class="finding"><div class="finding-num">3</div><p>Smart Pricing performed slightly better than manual pricing, but it should be treated as supporting evidence, not the final answer.</p></div>
+        <div class="finding"><div class="finding-num">4</div><p>Under Valencia’s 90-day cap, Airbnb revenue is about €8,820/year compared to €10,800/year from long-term renting.</p></div>
+      </div>
+      <div class="verdict-card">
+        <div class="small">Final Verdict</div>
+        <h3>Long-term renting is the stronger option</h3>
+        <p>The 90-day cap, platform dependency, and stricter regulation make Airbnb less stable and less financially attractive for this property.</p>
+      </div>
+    </aside>
+  </div>
+
+<footer>
+  <h2>Carlos Palomares</h2>
+  <p>MIS 432 · AI in Business · Western Washington University</p>
+  <p>
+    <a href="mailto:palomarescarlitos24@gmail.com">palomarescarlitos24@gmail.com</a>
+    ·
+    <a href="https://www.linkedin.com/in/carlosalbertopalomares" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  </p>
+</footer>
+</body>
+</html>

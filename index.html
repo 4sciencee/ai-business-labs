@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Business Labs</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8fb;
+      --text: #172033;
+      --muted: #5d677a;
+      --line: #d9deea;
+      --panel: #ffffff;
+      --accent: #1769aa;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    main {
+      width: min(920px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 56px 0;
+    }
+
+    header {
+      margin-bottom: 32px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      line-height: 1.05;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 720px;
+      font-size: 1.05rem;
+    }
+
+    .projects {
+      display: grid;
+      gap: 14px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .project {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .project a,
+    .project span {
+      display: block;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .project a:hover {
+      color: var(--accent);
+      background: #f1f6fb;
+    }
+
+    .eyebrow {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .title {
+      display: block;
+      font-weight: 700;
+      font-size: 1.08rem;
+    }
+
+    .missing {
+      opacity: 0.68;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>AI Business Labs</h1>
+      <p>Applied AI coursework for Western Washington University's MIS 432: Artificial Intelligence in Business.</p>
+    </header>
+
+    <ul class="projects" aria-label="Applied AI projects">
+      <li class="project missing">
+        <span>
+          <span class="eyebrow">Lab 01</span>
+          <span class="title">Netflix Artwork A/B Testing - not yet added</span>
+        </span>
+      </li>
+      <li class="project">
+        <a href="./lab-02-spotify-recommendation-system/">
+          <span class="eyebrow">Lab 02</span>
+          <span class="title">Spotify-Style Recommendation System and Wrapped</span>
+        </a>
+      </li>
+      <li class="project">
+        <a href="./lab-03-uber-forecasting/">
+          <span class="eyebrow">Lab 03</span>
+          <span class="title">Forecasting and the Uber Factory</span>
+        </a>
+      </li>
+      <li class="project">
+        <a href="./lab-04-waymo-deep-learning-rl/">
+          <span class="eyebrow">Lab 04</span>
+          <span class="title">Deep Learning, Reinforcement Learning, and Waymo</span>
+        </a>
+      </li>
+      <li class="project">
+        <a href="./lab-05-airbnb-ai-systems/">
+          <span class="eyebrow">Lab 05</span>
+          <span class="title">Airbnb AI Systems Analysis</span>
+        </a>
+      </li>
+      <li class="project">
+        <a href="./lab-06-agentic-ai-workflow/">
+          <span class="eyebrow">Lab 06</span>
+          <span class="title">Agentic AI Workflow</span>
+        </a>
+      </li>
+    </ul>
+  </main>
+</body>
+</html>
