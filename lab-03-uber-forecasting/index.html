@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Uber Demand Forecasting · MIS 432 Portfolio</title>
+<title>Uber Demand Forecasting | MIS 432</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&family=Bebas+Neue&display=swap');
 
@@ -50,11 +50,14 @@
 
   .nav-brand {
     font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     letter-spacing: 0.12em;
-    color: var(--cyan);
+    color: var(--white);
     text-transform: uppercase;
+    text-decoration: none;
   }
+
+  .nav-brand span { color: var(--cyan); }
 
   .nav-links {
     display: flex;
@@ -73,6 +76,19 @@
   }
 
   .nav-links a:hover { color: var(--cyan); }
+
+  .nav-back {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--gray-mid);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-back:hover { color: var(--cyan); }
 
   /* ─── HERO ─────────────────────────────────────────────────── */
   .hero {
@@ -514,7 +530,7 @@
 
   @media (max-width: 640px) {
     nav { padding: 0 20px; }
-    .nav-links { display: none; }
+    .nav-links, .nav-back { display: none; }
     section, .hero { padding: 60px 20px; }
     .memo-body { font-size: 0.62rem; white-space: pre-wrap; }
   }
@@ -522,27 +538,24 @@
 </head>
 <body>
 
-<!-- ═══════════════════════════════ NAV ════════════════════════════════ -->
+<!-- NAV -->
 <nav>
-  <div class="nav-brand">MIS 432 · AI in Business · Western Washington University</div>
+  <a class="nav-brand" href="../"><span>AI Business</span> Labs</a>
   <ul class="nav-links">
     <li><a href="#problem">Problem</a></li>
     <li><a href="#model">Model</a></li>
-    <li><a href="#concert">Concert Night</a></li>
-    <li><a href="#stress">Stress Test</a></li>
+    <li><a href="#concert">Concert</a></li>
     <li><a href="#decisions">Decisions</a></li>
-    <li><a href="#breaks">When It Breaks</a></li>
-    <li><a href="#analysis">Analysis</a></li>
   </ul>
+  <a class="nav-back" href="../">Back to Labs</a>
 </nav>
-
-<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<!-- HERO -->
 <div class="hero fade-in">
-  <div class="hero-label">Portfolio Project</div>
-  <h1>Uber<br><span>Demand</span><br>Forecasting</h1>
+  <div class="hero-label">Lab 03 - Canvas Lab #4 - MIS 432</div>
+  <h1>Uber <span>Demand</span> Forecasting</h1>
   <p class="hero-sub">
-    Building Uber's ride-demand prediction system from scratch — from raw historical data
-    to a live operations memo for a sold-out concert at WWU.
+    A forecasting lab that models ride demand near WWU using historical weekly data,
+    backtesting, and operational decision analysis.
   </p>
   <div class="hero-meta">
     <div class="hero-meta-item">
@@ -563,7 +576,6 @@
     </div>
   </div>
 </div>
-
 <!-- ═══════════════════════════ SECTION 1 — BUSINESS PROBLEM ══════════ -->
 <section id="problem" class="fade-in">
   <div class="section-num">01 · The Business Problem</div>
@@ -958,7 +970,7 @@ applied accordingly.</div>
     <span>MIS 432 · AI in Business</span> · Western Washington University<br>
     Uber Demand Forecasting Lab · 104-Week Backtest · Bellingham, WA<br>
     <br>
-    Built as a portfolio artifact to demonstrate end-to-end applied ML workflow:<br>
+    Built as coursework to demonstrate an end-to-end applied ML workflow:<br>
     data collection → model training → backtest validation → operations memo → stress test → failure analysis.
   </div>
 </footer>
