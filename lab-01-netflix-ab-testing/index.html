@@ -68,6 +68,32 @@
 
     .nav-back:hover { color: #fff; }
 
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex: 0 0 auto;
+    }
+
+    .repo-link {
+      color: #fff;
+      border: 1px solid rgba(229, 9, 20, 0.45);
+      background: rgba(229, 9, 20, 0.12);
+      text-decoration: none;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding: 7px 11px;
+      transition: border-color 0.18s, background 0.18s;
+    }
+
+    .repo-link:hover {
+      border-color: #E50914;
+      background: rgba(229, 9, 20, 0.22);
+    }
+
     .lab-menu {
       position: relative;
       flex: 0 0 auto;
@@ -467,7 +493,7 @@
       .top-nav { padding: 0 20px; }
       .nav-inner { height: 56px; }
       .nav-brand { font-size: 0.66rem; }
-      .nav-back { display: none; }
+      .nav-actions { display: none; }
       .lab-menu-panel { width: min(310px, calc(100vw - 40px)); }
       .section-nav { top: 56px; }
       .section-nav-inner { padding: 0 20px; }
@@ -499,7 +525,10 @@
         </div>
         <a class="nav-brand" href="../"><span>AI Business</span> Labs</a>
       </div>
-      <a class="nav-back" href="../">Back to Labs</a>
+      <div class="nav-actions">
+        <a class="nav-back" href="../">Back to Labs</a>
+        <a class="repo-link" href="https://github.com/4sciencee/ai-business-labs" target="_blank" rel="noopener">GitHub Repo</a>
+      </div>
     </div>
   </nav>
 

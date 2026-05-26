@@ -70,6 +70,32 @@
     .top-back { color: rgba(255,255,255,0.7); transition: color 0.18s; }
     .top-back:hover { color: white; }
 
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex: 0 0 auto;
+    }
+
+    .repo-link {
+      color: white;
+      border: 1px solid rgba(255,90,95,0.42);
+      background: rgba(255,90,95,0.1);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding: 7px 11px;
+      transition: border-color 0.18s, background 0.18s;
+    }
+
+    .repo-link:hover {
+      border-color: var(--airbnb);
+      background: rgba(255,90,95,0.2);
+    }
+
     .lab-menu { position: relative; flex: 0 0 auto; }
     .lab-menu-button {
       width: 28px;
@@ -490,7 +516,7 @@
 
     @media (max-width: 900px) {
       .top-nav { padding: 0 20px; }
-      .top-back { display: none; }
+      .nav-actions { display: none; }
       .top-brand { font-size: 11px; }
       .lab-menu-panel { width: min(310px, calc(100vw - 40px)); }
       header { padding: 64px 0 52px; }
@@ -523,7 +549,10 @@
         </div>
         <a class="top-brand" href="../"><span>AI Business</span> Labs</a>
       </div>
-      <a class="top-back" href="../">Back to Labs</a>
+      <div class="nav-actions">
+        <a class="top-back" href="../">Back to Labs</a>
+        <a class="repo-link" href="https://github.com/4sciencee/ai-business-labs" target="_blank" rel="noopener">GitHub Repo</a>
+      </div>
     </div>
   </div>
 
