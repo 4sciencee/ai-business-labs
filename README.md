@@ -1,5 +1,5 @@
 # AI Business Labs
-https://4sciencee.github.io/ai-business-labs/
+
 Western Washington University MIS 432 coursework repository featuring applied AI projects focused on data-driven decision-making, business analytics, and simplified AI systems.
 
 ## Applied AI Projects
@@ -11,6 +11,5 @@ Western Washington University MIS 432 coursework repository featuring applied AI
 - Lab 05: Airbnb AI Systems Analysis (Canvas Lab #6)
 - Lab 06: Agentic AI Workflow (Canvas Lab #7)
 
-## GitHub Pages
-
-Each project is organized in its own folder with an `index.html` file so it can be opened as a separate web page.
+## Live Project Site
+https://4sciencee.github.io/ai-business-labs/
