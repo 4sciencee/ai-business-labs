@@ -5,144 +5,397 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Business Labs</title>
   <style>
-    :root {
-      color-scheme: light;
-      --bg: #f7f8fb;
-      --text: #172033;
-      --muted: #5d677a;
-      --line: #d9deea;
-      --panel: #ffffff;
-      --accent: #1769aa;
-    }
-
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0a1628;
+      color: #ffffff;
     }
 
-    main {
-      width: min(920px, calc(100% - 32px));
+    .page {
+      min-height: 100vh;
+      padding-bottom: 3rem;
+      background: #0a1628;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 3rem 2rem 2.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      background: #0a1628;
+    }
+
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(55, 138, 221, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(55, 138, 221, 0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
       margin: 0 auto;
-      padding: 56px 0;
     }
 
-    header {
-      margin-bottom: 32px;
+    .wwu-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 1.25rem;
+      padding: 4px 12px;
+      border: 1px solid rgba(55, 138, 221, 0.3);
+      border-radius: 100px;
+      background: rgba(55, 138, 221, 0.12);
+    }
+
+    .wwu-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #378add;
+    }
+
+    .wwu-badge span:last-child {
+      color: #85b7eb;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
     }
 
     h1 {
-      margin: 0 0 12px;
-      font-size: clamp(2rem, 5vw, 3.25rem);
-      line-height: 1.05;
+      margin-bottom: 0.75rem;
+      color: #ffffff;
+      font-size: 34px;
+      font-weight: 600;
+      line-height: 1.2;
     }
 
-    p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 720px;
-      font-size: 1.05rem;
+    h1 span {
+      color: #378add;
     }
 
-    .projects {
-      display: grid;
-      gap: 14px;
-      padding: 0;
-      margin: 0;
-      list-style: none;
+    .hero-desc {
+      max-width: 520px;
+      color: #8796b3;
+      font-size: 14px;
+      line-height: 1.6;
     }
 
-    .project {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
+    .stat-bar {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1.75rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    .project a,
-    .project span {
-      display: block;
-      padding: 18px 20px;
-      text-decoration: none;
-      color: var(--text);
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
     }
 
-    .project a:hover {
-      color: var(--accent);
-      background: #f1f6fb;
+    .stat-num {
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 600;
     }
 
-    .eyebrow {
-      display: block;
-      margin-bottom: 4px;
-      color: var(--muted);
-      font-size: 0.86rem;
+    .stat-label {
+      color: #4e6080;
+      font-size: 11px;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
+    }
+
+    .labs-section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 2rem 0;
+    }
+
+    .section-label {
+      margin-bottom: 1rem;
+      color: #6c7d9b;
+      font-size: 11px;
+      font-weight: 600;
       letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    .title {
-      display: block;
+    .lab-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      min-height: 72px;
+      margin-bottom: 10px;
+      padding: 1.1rem 1.25rem;
+      border: 1px solid rgba(55, 138, 221, 0.12);
+      border-radius: 10px;
+      background: #0f1e33;
+      color: inherit;
+      text-decoration: none;
+      transition: border-color 0.15s, background 0.15s, transform 0.15s;
+    }
+
+    .lab-card:hover,
+    .lab-card:focus-visible {
+      border-color: rgba(55, 138, 221, 0.4);
+      background: #112035;
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .lab-num-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      font-size: 11px;
       font-weight: 700;
-      font-size: 1.08rem;
+      letter-spacing: 0.04em;
     }
 
-    .missing {
-      opacity: 0.68;
+    .num-blue {
+      border: 1px solid rgba(55, 138, 221, 0.22);
+      background: rgba(55, 138, 221, 0.12);
+      color: #378add;
+    }
+
+    .num-teal {
+      border: 1px solid rgba(29, 158, 117, 0.22);
+      background: rgba(29, 158, 117, 0.12);
+      color: #1d9e75;
+    }
+
+    .lab-meta {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .lab-tag {
+      margin-bottom: 3px;
+      color: #60718f;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .lab-title {
+      color: #d3e0f2;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .lab-chip {
+      flex-shrink: 0;
+      padding: 3px 9px;
+      border-radius: 100px;
+      font-size: 10px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .chip-ml {
+      border: 1px solid rgba(29, 158, 117, 0.2);
+      background: rgba(29, 158, 117, 0.1);
+      color: #5dcaa5;
+    }
+
+    .chip-data {
+      border: 1px solid rgba(55, 138, 221, 0.2);
+      background: rgba(55, 138, 221, 0.1);
+      color: #85b7eb;
+    }
+
+    .chip-ai {
+      border: 1px solid rgba(127, 119, 221, 0.2);
+      background: rgba(127, 119, 221, 0.1);
+      color: #afa9ec;
+    }
+
+    .arrow-icon {
+      flex-shrink: 0;
+      color: #3e5272;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .lab-card:hover .arrow-icon,
+    .lab-card:focus-visible .arrow-icon {
+      color: #378add;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 720px;
+      margin: 2rem auto 0;
+      padding: 1.5rem 2rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      gap: 1rem;
+    }
+
+    .footer-text,
+    .footer-logo {
+      color: #4e6080;
+      font-size: 12px;
+    }
+
+    .footer-logo {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .footer-logo span {
+      color: #378add;
+    }
+
+    @media (max-width: 620px) {
+      .hero {
+        padding: 2.25rem 1rem 2rem;
+      }
+
+      .labs-section {
+        padding: 1.5rem 1rem 0;
+      }
+
+      .stat-bar {
+        gap: 1rem;
+      }
+
+      .lab-card {
+        align-items: flex-start;
+        gap: 0.85rem;
+        padding: 1rem;
+      }
+
+      .lab-chip {
+        display: none;
+      }
+
+      .footer {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 1.5rem 1rem 0;
+      }
     }
   </style>
 </head>
 <body>
-  <main>
-    <header>
-      <h1>AI Business Labs</h1>
-      <p>Applied AI coursework for Western Washington University's MIS 432: Artificial Intelligence in Business.</p>
+  <div class="page">
+    <header class="hero">
+      <div class="hero-grid-bg"></div>
+      <div class="hero-inner">
+        <div class="wwu-badge">
+          <span class="wwu-dot"></span>
+          <span>Western Washington University - MIS 432</span>
+        </div>
+        <h1><span>AI Business</span> Labs</h1>
+        <p class="hero-desc">Applied machine learning and AI coursework exploring real-world business applications, from recommendation systems to agentic workflows.</p>
+        <div class="stat-bar" aria-label="Course statistics">
+          <div class="stat-item">
+            <span class="stat-num">6</span>
+            <span class="stat-label">Labs</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">5+</span>
+            <span class="stat-label">Cases</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">MIS 432</span>
+            <span class="stat-label">Course</span>
+          </div>
+        </div>
+      </div>
     </header>
 
-    <ul class="projects" aria-label="Applied AI projects">
-      <li class="project">
-        <a href="./lab-01-netflix-ab-testing/">
-          <span class="eyebrow">Lab 01</span>
-          <span class="title">Netflix Artwork A/B Testing</span>
-        </a>
-      </li>
-      <li class="project">
-        <a href="./lab-02-spotify-recommendation-system/">
-          <span class="eyebrow">Lab 02</span>
-          <span class="title">Spotify-Style Recommendation System and Wrapped</span>
-        </a>
-      </li>
-      <li class="project">
-        <a href="./lab-03-uber-forecasting/">
-          <span class="eyebrow">Lab 03</span>
-          <span class="title">Forecasting and the Uber Factory</span>
-        </a>
-      </li>
-      <li class="project">
-        <a href="./lab-04-waymo-deep-learning-rl/">
-          <span class="eyebrow">Lab 04</span>
-          <span class="title">Deep Learning, Reinforcement Learning, and Waymo</span>
-        </a>
-      </li>
-      <li class="project">
-        <a href="./lab-05-airbnb-ai-systems/">
-          <span class="eyebrow">Lab 05</span>
-          <span class="title">Airbnb AI Systems Analysis</span>
-        </a>
-      </li>
-      <li class="project">
-        <a href="./lab-06-agentic-ai-workflow/">
-          <span class="eyebrow">Lab 06</span>
-          <span class="title">Agentic AI Workflow</span>
-        </a>
-      </li>
-    </ul>
-  </main>
+    <main class="labs-section">
+      <p class="section-label">Applied AI Projects</p>
+
+      <a class="lab-card" href="./lab-01-netflix-ab-testing/">
+        <div class="lab-num-badge num-blue">01</div>
+        <div class="lab-meta">
+          <div class="lab-tag">Lab 01</div>
+          <div class="lab-title">Netflix Artwork A/B Testing</div>
+        </div>
+        <span class="lab-chip chip-data">Data</span>
+        <span class="arrow-icon" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="lab-card" href="./lab-02-spotify-recommendation-system/">
+        <div class="lab-num-badge num-teal">02</div>
+        <div class="lab-meta">
+          <div class="lab-tag">Lab 02</div>
+          <div class="lab-title">Spotify-Style Recommendation System and Wrapped</div>
+        </div>
+        <span class="lab-chip chip-ml">ML</span>
+        <span class="arrow-icon" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="lab-card" href="./lab-03-uber-forecasting/">
+        <div class="lab-num-badge num-blue">03</div>
+        <div class="lab-meta">
+          <div class="lab-tag">Lab 03</div>
+          <div class="lab-title">Forecasting and the Uber Factory</div>
+        </div>
+        <span class="lab-chip chip-data">Data</span>
+        <span class="arrow-icon" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="lab-card" href="./lab-04-waymo-deep-learning-rl/">
+        <div class="lab-num-badge num-teal">04</div>
+        <div class="lab-meta">
+          <div class="lab-tag">Lab 04</div>
+          <div class="lab-title">Deep Learning, Reinforcement Learning, and Waymo</div>
+        </div>
+        <span class="lab-chip chip-ml">ML</span>
+        <span class="arrow-icon" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="lab-card" href="./lab-05-airbnb-ai-systems/">
+        <div class="lab-num-badge num-blue">05</div>
+        <div class="lab-meta">
+          <div class="lab-tag">Lab 05</div>
+          <div class="lab-title">Airbnb AI Systems Analysis</div>
+        </div>
+        <span class="lab-chip chip-ai">AI</span>
+        <span class="arrow-icon" aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="lab-card" href="./lab-06-agentic-ai-workflow/">
+        <div class="lab-num-badge num-teal">06</div>
+        <div class="lab-meta">
+          <div class="lab-tag">Lab 06</div>
+          <div class="lab-title">Agentic AI Workflow</div>
+        </div>
+        <span class="lab-chip chip-ai">AI</span>
+        <span class="arrow-icon" aria-hidden="true">&rarr;</span>
+      </a>
+    </main>
+
+    <footer class="footer">
+      <span class="footer-text">Western Washington University - Artificial Intelligence in Business</span>
+      <span class="footer-logo"><span>WWU</span> - MIS 432</span>
+    </footer>
+  </div>
 </body>
 </html>
