@@ -154,7 +154,7 @@
   .step-nav {
     background: var(--gray-bg);
     border-bottom: 1px solid var(--gray-border);
-    padding: 16px 0;
+    padding: 0;
     position: sticky;
     top: 58px;
     z-index: 100;
@@ -162,9 +162,15 @@
 
   .step-nav-inner {
     display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
+    gap: 4px;
+    flex-wrap: nowrap;
     align-items: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .step-nav-inner::-webkit-scrollbar {
+    display: none;
   }
 
   .step-nav a {
@@ -174,18 +180,15 @@
     text-transform: uppercase;
     color: var(--charcoal-light);
     text-decoration: none;
-    padding: 5px 12px;
-    border-radius: 20px;
-    border: 1px solid var(--gray-border);
-    background: var(--white);
-    transition: all 0.18s ease;
+    padding: 14px 12px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.18s ease, border-bottom-color 0.18s ease;
     white-space: nowrap;
   }
 
   .step-nav a:hover {
-    border-color: var(--green);
     color: var(--green-mid);
-    background: var(--green-light);
+    border-bottom-color: var(--green);
   }
 
   .situation-block {
@@ -464,7 +467,7 @@
     .situation-block { padding: 24px 20px; }
     .learnings-list li { grid-template-columns: 1fr; gap: 6px; }
     .contact-inner { flex-direction: column; align-items: flex-start; }
-    .step-nav-inner { gap: 6px; }
+    .step-nav-inner { gap: 4px; }
   }
 </style>
 </head>
