@@ -123,7 +123,34 @@
     transform: scale(1.06);
   }
 
-  .lab-menu {
+  
+    /* NAV CONSISTENCY OVERRIDE */
+    body > nav {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .nav-actions a {
+      display: inline-block;
+      font-size: 12px;
+      line-height: 1;
+      color: var(--gray-mid);
+      font-weight: 700;
+      transition: color 0.18s, transform 0.18s;
+    }
+
+    .repo-link,
+    .repo-link:hover {
+      border: 0;
+      background: transparent;
+      padding: 0;
+      color: var(--gray-mid);
+    }
+
+    .nav-actions a:hover {
+      color: #fff;
+      transform: scale(1.06);
+    }.lab-menu {
     position: relative;
     flex: 0 0 auto;
   }
