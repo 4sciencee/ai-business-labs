@@ -49,6 +49,7 @@
       background: rgba(26, 0, 16, 0.96);
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(12px);
+      padding: 0 40px;
     }
 
     .top-nav-inner {
@@ -57,7 +58,7 @@
       justify-content: space-between;
       gap: 18px;
       min-height: 58px;
-      padding: 0 22px;
+      max-width: none;
     }
 
     .top-brand,
@@ -91,12 +92,12 @@
       background:
         radial-gradient(circle at 18% 8%, rgba(205, 0, 59, 0.26), transparent 32%),
         linear-gradient(135deg, var(--ink) 0%, #270017 56%, #420019 100%);
-      padding: 68px 22px 54px;
+      padding: 68px 0 54px;
       border-bottom: 6px solid var(--crimson);
     }
 
     .wrap {
-      max-width: 1120px;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
@@ -144,6 +145,7 @@
 
     .hero-grid {
       display: block;
+      padding: 0 40px;
     }
 
     .hero-card {
@@ -185,10 +187,10 @@
       display: flex;
       gap: 10px;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       flex-wrap: wrap;
       overflow-x: visible;
-      padding: 10px 22px;
+      padding: 10px 40px;
     }
 
     .nav-inner a {
@@ -204,7 +206,7 @@
     }
 
     main {
-      padding: 28px 22px 56px;
+      padding: 28px 40px 56px;
     }
 
     section {
@@ -429,7 +431,11 @@
       }
 
       .hero {
-        padding-top: 46px;
+        padding: 46px 20px 54px;
+      }
+
+      .hero-grid {
+        padding: 0;
       }
 
       .top-meta,
@@ -439,6 +445,10 @@
 
       .top-nav-inner {
         justify-content: flex-start;
+      }
+
+      .top-nav {
+        padding: 0 20px;
       }
 
       h1 {
@@ -457,12 +467,18 @@
       .section-body {
         padding: 18px;
       }
+
+      .nav-inner,
+      main {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="top-nav">
-    <div class="wrap top-nav-inner">
+    <div class="top-nav-inner">
       <a class="top-brand" href="../"><span>AI Business</span> Labs</a>
       <div class="top-meta">Lab 06 - MIS 432</div>
       <a class="top-back" href="../">Back to Labs</a>
