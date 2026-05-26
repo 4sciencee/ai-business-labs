@@ -53,6 +53,13 @@
     gap: 18px;
   }
 
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-width: 0;
+  }
+
   .top-brand,
   .top-back {
     font-family: 'DM Mono', monospace;
@@ -68,12 +75,61 @@
   .top-back { color: rgba(255,255,255,0.62); transition: color 0.18s; }
   .top-back:hover { color: var(--white); }
 
-  .top-meta {
+  .lab-menu { position: relative; flex: 0 0 auto; }
+  .lab-menu-button {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-content: center;
+    gap: 4px;
+    border: 0;
+    background: transparent;
+    color: var(--white);
+    cursor: pointer;
+  }
+  .lab-menu-button span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 999px;
+    transition: background 0.18s;
+  }
+  .lab-menu:hover .lab-menu-button,
+  .lab-menu:focus-within .lab-menu-button { color: var(--green); }
+  .lab-menu-panel {
+    position: absolute;
+    top: calc(100% + 15px);
+    left: 0;
+    width: 310px;
+    padding: 10px;
+    background: rgba(26, 26, 46, 0.98);
+    border: 1px solid rgba(0,191,165,0.35);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+  }
+  .lab-menu:hover .lab-menu-panel,
+  .lab-menu:focus-within .lab-menu-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .lab-menu-panel a {
+    display: block;
+    padding: 9px 10px;
+    color: rgba(255,255,255,0.76);
     font-family: 'DM Mono', monospace;
-    color: rgba(255,255,255,0.42);
     font-size: 10px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.04em;
+    text-decoration: none;
     text-transform: uppercase;
+  }
+  .lab-menu-panel a:hover {
+    color: var(--white);
+    background: rgba(0,191,165,0.13);
   }
 
   .site-header {
@@ -461,8 +517,9 @@
 
   @media (max-width: 600px) {
     .top-nav { padding: 0 20px; }
-    .top-meta,
     .top-back { display: none; }
+    .top-brand { font-size: 10px; }
+    .lab-menu-panel { width: min(310px, calc(100vw - 40px)); }
     .container { padding: 0 20px; }
     .artifact { padding: 24px 20px; }
     .situation-block { padding: 24px 20px; }
@@ -477,8 +534,22 @@
 
 <nav class="top-nav" aria-label="Site navigation">
   <div class="top-nav-inner">
-    <a class="top-brand" href="../"><span>AI Business</span> Labs</a>
-    <div class="top-meta">Lab 04 - MIS 432</div>
+    <div class="nav-left">
+      <div class="lab-menu">
+        <button class="lab-menu-button" type="button" aria-label="Open lab navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="lab-menu-panel">
+          <a href="../lab-01-netflix-ab-testing/">01 Netflix Artwork A/B Testing</a>
+          <a href="../lab-02-spotify-recommendation-system/">02 Spotify Recommendation System</a>
+          <a href="../lab-03-uber-forecasting/">03 Uber Demand Forecasting</a>
+          <a href="../lab-04-waymo-deep-learning-rl/">04 Waymo Strategy Analysis</a>
+          <a href="../lab-05-airbnb-ai-systems/">05 Airbnb AI Systems Analysis</a>
+          <a href="../lab-06-agentic-ai-workflow/">06 Agentic AI Workflow</a>
+        </div>
+      </div>
+      <a class="top-brand" href="../"><span>AI Business</span> Labs</a>
+    </div>
     <a class="top-back" href="../">Back to Labs</a>
   </div>
 </nav>

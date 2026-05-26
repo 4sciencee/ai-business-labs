@@ -48,6 +48,13 @@
     height: 58px;
   }
 
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-width: 0;
+  }
+
   .nav-brand {
     font-family: 'Space Mono', monospace;
     font-size: 0.72rem;
@@ -58,15 +65,6 @@
   }
 
   .nav-brand span { color: var(--cyan); }
-
-  .nav-meta {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
-    color: var(--gray-mid);
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
 
   .nav-back {
     font-family: 'Space Mono', monospace;
@@ -80,6 +78,75 @@
   }
 
   .nav-back:hover { color: var(--cyan); }
+
+  .lab-menu {
+    position: relative;
+    flex: 0 0 auto;
+  }
+
+  .lab-menu-button {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-content: center;
+    gap: 4px;
+    border: 0;
+    background: transparent;
+    color: var(--white);
+    cursor: pointer;
+  }
+
+  .lab-menu-button span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 999px;
+    transition: background 0.18s;
+  }
+
+  .lab-menu:hover .lab-menu-button,
+  .lab-menu:focus-within .lab-menu-button {
+    color: var(--cyan);
+  }
+
+  .lab-menu-panel {
+    position: absolute;
+    top: calc(100% + 15px);
+    left: 0;
+    width: 310px;
+    padding: 10px;
+    background: rgba(0,0,0,0.98);
+    border: 1px solid var(--border);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.42);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+  }
+
+  .lab-menu:hover .lab-menu-panel,
+  .lab-menu:focus-within .lab-menu-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .lab-menu-panel a {
+    display: block;
+    padding: 9px 10px;
+    color: var(--gray-light);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .lab-menu-panel a:hover {
+    color: var(--cyan);
+    background: rgba(31,186,214,0.13);
+  }
 
   /* ─── HERO ─────────────────────────────────────────────────── */
   .hero {
@@ -563,7 +630,9 @@
 
   @media (max-width: 640px) {
     nav { padding: 0 20px; }
-    .nav-meta, .nav-back { display: none; }
+    .nav-brand { font-size: 0.66rem; }
+    .nav-back { display: none; }
+    .lab-menu-panel { width: min(310px, calc(100vw - 40px)); }
     .section-nav { top: 58px; }
     .section-nav-inner { padding: 0 20px; }
     section, .hero { padding: 60px 20px; }
@@ -575,8 +644,22 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-brand" href="../"><span>AI Business</span> Labs</a>
-  <div class="nav-meta">Lab 03 - MIS 432</div>
+  <div class="nav-left">
+    <div class="lab-menu">
+      <button class="lab-menu-button" type="button" aria-label="Open lab navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="lab-menu-panel">
+        <a href="../lab-01-netflix-ab-testing/">01 Netflix Artwork A/B Testing</a>
+        <a href="../lab-02-spotify-recommendation-system/">02 Spotify Recommendation System</a>
+        <a href="../lab-03-uber-forecasting/">03 Uber Demand Forecasting</a>
+        <a href="../lab-04-waymo-deep-learning-rl/">04 Waymo Strategy Analysis</a>
+        <a href="../lab-05-airbnb-ai-systems/">05 Airbnb AI Systems Analysis</a>
+        <a href="../lab-06-agentic-ai-workflow/">06 Agentic AI Workflow</a>
+      </div>
+    </div>
+    <a class="nav-brand" href="../"><span>AI Business</span> Labs</a>
+  </div>
   <a class="nav-back" href="../">Back to Labs</a>
 </nav>
 <!-- HERO -->

@@ -61,6 +61,13 @@
       max-width: none;
     }
 
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-width: 0;
+    }
+
     .top-brand,
     .top-back {
       color: #fff;
@@ -72,19 +79,82 @@
       color: #ff7da2;
     }
 
-    .top-meta {
-      color: #ffdce7;
-      font-size: 0.82rem;
+    .top-back {
+      font-size: 0.84rem;
+      transition: color 0.18s;
+    }
+
+    .top-back:hover {
+      color: #ff7da2;
+    }
+
+    .lab-menu {
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .lab-menu-button {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-content: center;
+      gap: 4px;
+      border: 0;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .lab-menu-button span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 999px;
+      transition: background 0.18s;
+    }
+
+    .lab-menu:hover .lab-menu-button,
+    .lab-menu:focus-within .lab-menu-button {
+      color: #ff7da2;
+    }
+
+    .lab-menu-panel {
+      position: absolute;
+      top: calc(100% + 15px);
+      left: 0;
+      width: 310px;
+      padding: 10px;
+      background: rgba(26, 0, 16, 0.98);
+      border: 1px solid rgba(255, 125, 162, 0.34);
+      box-shadow: 0 18px 45px rgba(26, 0, 16, 0.34);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+    }
+
+    .lab-menu:hover .lab-menu-panel,
+    .lab-menu:focus-within .lab-menu-panel {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .lab-menu-panel a {
+      display: block;
+      padding: 9px 10px;
+      color: #ffe5ee;
+      font-size: 0.76rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.04em;
+      text-decoration: none;
       text-transform: uppercase;
     }
 
-    .top-back {
-      border: 1px solid rgba(255, 255, 255, 0.24);
-      border-radius: 999px;
-      padding: 7px 12px;
-      font-size: 0.84rem;
+    .lab-menu-panel a:hover {
+      color: #fff;
+      background: rgba(205, 0, 59, 0.16);
     }
 
     .hero {
@@ -450,7 +520,6 @@
         padding: 0;
       }
 
-      .top-meta,
       .top-back {
         display: none;
       }
@@ -461,6 +530,14 @@
 
       .top-nav {
         padding: 0 20px;
+      }
+
+      .top-brand {
+        font-size: 0.84rem;
+      }
+
+      .lab-menu-panel {
+        width: min(310px, calc(100vw - 40px));
       }
 
       h1 {
@@ -495,8 +572,22 @@
 <body>
   <div class="top-nav">
     <div class="top-nav-inner">
-      <a class="top-brand" href="../"><span>AI Business</span> Labs</a>
-      <div class="top-meta">Lab 06 - MIS 432</div>
+      <div class="nav-left">
+        <div class="lab-menu">
+          <button class="lab-menu-button" type="button" aria-label="Open lab navigation">
+            <span></span><span></span><span></span>
+          </button>
+          <div class="lab-menu-panel">
+            <a href="../lab-01-netflix-ab-testing/">01 Netflix Artwork A/B Testing</a>
+            <a href="../lab-02-spotify-recommendation-system/">02 Spotify Recommendation System</a>
+            <a href="../lab-03-uber-forecasting/">03 Uber Demand Forecasting</a>
+            <a href="../lab-04-waymo-deep-learning-rl/">04 Waymo Strategy Analysis</a>
+            <a href="../lab-05-airbnb-ai-systems/">05 Airbnb AI Systems Analysis</a>
+            <a href="../lab-06-agentic-ai-workflow/">06 Agentic AI Workflow</a>
+          </div>
+        </div>
+        <a class="top-brand" href="../"><span>AI Business</span> Labs</a>
+      </div>
       <a class="top-back" href="../">Back to Labs</a>
     </div>
   </div>
