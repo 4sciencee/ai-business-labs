@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="A complete Spotify-style AI recommendation system built with collaborative filtering, K-Means clustering, and cosine similarity. MIS 432, Western Washington University.">
-<title>Spotify AI Recommendation Engine — MIS 432 · WWU</title>
+<title>Spotify-Style Recommendation System | MIS 432</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -78,6 +78,11 @@ nav {
 }
 .nav-links a:hover { color: var(--text); }
 .nav-tag { font-size: 11px; color: var(--text3); font-family: var(--mono); white-space: nowrap; }
+.nav-back {
+  font-size: 13px; color: var(--text2); text-decoration: none;
+  transition: color 0.18s; white-space: nowrap;
+}
+.nav-back:hover { color: var(--text); }
 
 /* === HERO === */
 .hero { max-width: var(--max); margin: 0 auto; padding: 6rem 2rem 5rem; }
@@ -97,12 +102,12 @@ nav {
   font-family: var(--serif); font-weight: 700;
   font-size: clamp(2.2rem, 5vw, 3.75rem);
   line-height: 1.08; letter-spacing: -0.025em;
-  margin-bottom: 1.4rem; max-width: 820px; color: var(--text);
+  margin-bottom: 1.4rem; max-width: 760px; color: var(--text);
 }
 .hero h1 em { font-style: normal; color: var(--green); }
 .hero-sub {
   font-size: 17px; color: var(--text2);
-  max-width: 560px; line-height: 1.72;
+  max-width: 650px; line-height: 1.72;
   margin-bottom: 2.25rem; font-weight: 300;
 }
 .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 3rem; }
@@ -490,6 +495,7 @@ footer {
 }
 @media (max-width: 600px) {
   .nav-links { display: none; }
+  .nav-back { display: none; }
   .stats-inner { grid-template-columns: repeat(2,1fr); }
   .hero { padding: 4rem 1.25rem 3rem; }
   .section { padding: 3.5rem 1.25rem; }
@@ -507,16 +513,16 @@ footer {
 ============================================================ -->
 <nav aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="#" class="nav-logo" aria-label="Home">
+    <a href="../" class="nav-logo" aria-label="Back to lab homepage">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-      <span>AI Recommendation Engine</span>
+      <span>AI Business Labs</span>
     </a>
     <div class="nav-links">
       <a href="#story">The Story</a>
       <a href="#system">Live System</a>
       <a href="#lessons">Key Lessons</a>
     </div>
-    <span class="nav-tag">MIS 432 &middot; WWU</span>
+    <a class="nav-back" href="../">Back to Labs</a>
   </div>
 </nav>
 
@@ -526,16 +532,16 @@ footer {
 <section class="hero">
   <div class="hero-eyebrow">
     <span class="dot" aria-hidden="true"></span>
-    MIS 432: AI in Business &middot; Western Washington University
+    Lab 02 - Canvas Lab #3 - MIS 432
   </div>
-  <h1>How Spotify turns <em>behavior</em> into the world's most personal music experience</h1>
-  <p class="hero-sub">A complete end-to-end AI recommendation system built from scratch — from raw behavioral data through collaborative filtering to real-time personalization — to understand how music discovery works at scale.</p>
+  <h1>Spotify-Style <em>Recommendation</em> System</h1>
+  <p class="hero-sub">An applied AI system that uses behavioral data, collaborative filtering, clustering, and similarity scoring to generate real-time music recommendations.</p>
   <div class="hero-tags">
-    <span class="hero-tag">Python &middot; Pandas &middot; scikit-learn</span>
+    <span class="hero-tag">Python - Pandas - scikit-learn</span>
     <span class="hero-tag">Collaborative Filtering</span>
     <span class="hero-tag">K-Means Clustering</span>
     <span class="hero-tag">Cosine Similarity</span>
-    <span class="hero-tag">OAuth PKCE</span>
+    <span class="hero-tag">Spotify Web API</span>
   </div>
   <div class="hero-actions">
     <a href="#system" class="btn-green">
