@@ -1,5 +1,5 @@
 # AI Business Labs
-
+https://4sciencee.github.io/ai-business-labs/
 Western Washington University MIS 432 coursework repository featuring applied AI projects focused on data-driven decision-making, business analytics, and simplified AI systems.
 
 ## Applied AI Projects
