@@ -16,7 +16,7 @@
       line-height: 1.7;
     }
 
-    nav {
+    .top-nav {
       position: sticky;
       top: 0;
       z-index: 20;
@@ -48,14 +48,15 @@
 
     .nav-brand span { color: #E50914; }
 
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-      list-style: none;
+    .nav-meta {
+      color: #777;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
-    .nav-links a,
     .nav-back {
       color: #8f8f8f;
       text-decoration: none;
@@ -67,7 +68,6 @@
       transition: color 0.18s;
     }
 
-    .nav-links a:hover,
     .nav-back:hover { color: #fff; }
 
     /* ── Hero Banner ── */
@@ -132,6 +132,48 @@
       flex-wrap: wrap;
     }
 
+    .section-nav {
+      position: sticky;
+      top: 58px;
+      z-index: 15;
+      background: rgba(20, 20, 20, 0.96);
+      border-top: 1px solid rgba(229, 9, 20, 0.42);
+      border-bottom: 1px solid #2a2a2a;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .section-nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-nav a {
+      color: #cfcfcf;
+      background: #1f1f1f;
+      border: 1px solid #343434;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 7px 13px;
+      white-space: nowrap;
+      transition: color 0.18s, border-color 0.18s, background 0.18s;
+    }
+
+    .section-nav a:hover {
+      color: #fff;
+      border-color: #E50914;
+      background: rgba(229, 9, 20, 0.18);
+    }
+
     .hero-meta-item {
       display: flex;
       flex-direction: column;
@@ -167,7 +209,7 @@
       border-left: 4px solid #E50914;
       padding-left: 14px;
       margin: 50px 0 18px;
-      scroll-margin-top: 90px;
+      scroll-margin-top: 128px;
     }
 
     p { color: #c8c8c8; margin-bottom: 14px; }
@@ -358,9 +400,11 @@
     }
 
     @media (max-width: 640px) {
-      nav { padding: 0 20px; }
+      .top-nav { padding: 0 20px; }
       .nav-inner { height: 56px; }
-      .nav-links, .nav-back { display: none; }
+      .nav-meta, .nav-back { display: none; }
+      .section-nav { top: 56px; }
+      .section-nav-inner { padding: 12px 20px; flex-wrap: nowrap; overflow-x: auto; }
       .hero { padding: 60px 20px; }
       .hero-inner { padding: 0; }
       .container { padding: 40px 20px 70px; }
@@ -371,15 +415,10 @@
 </head>
 <body>
 
-  <nav aria-label="Page navigation">
+  <nav class="top-nav" aria-label="Site navigation">
     <div class="nav-inner">
       <a class="nav-brand" href="../"><span>AI Business</span> Labs</a>
-      <ul class="nav-links">
-        <li><a href="#overview">Overview</a></li>
-        <li><a href="#results">Results</a></li>
-        <li><a href="#decision">Decision</a></li>
-        <li><a href="#impact">Impact</a></li>
-      </ul>
+      <div class="nav-meta">Lab 01 - MIS 432</div>
       <a class="nav-back" href="../">Back to Labs</a>
     </div>
   </nav>
@@ -414,6 +453,15 @@
       </div>
     </div>
   </div>
+
+  <nav class="section-nav" aria-label="Page sections">
+    <div class="section-nav-inner">
+      <a href="#overview">Overview</a>
+      <a href="#results">Results</a>
+      <a href="#decision">Decision</a>
+      <a href="#impact">Impact</a>
+    </div>
+  </nav>
 
   <div class="container">
 
