@@ -139,7 +139,9 @@
       overflow-x: auto;
       padding: 0 40px;
       gap: 4px;
+      scrollbar-width: none;
     }
+    .nav-inner::-webkit-scrollbar { display: none; }
     .nav-inner a {
       color: #555;
       text-decoration: none;
@@ -147,6 +149,7 @@
       padding: 14px 12px;
       white-space: nowrap;
       border-bottom: 2px solid transparent;
+      transition: color 0.18s, border-bottom-color 0.18s;
     }
     .nav-inner a:hover {
       color: var(--airbnb);
