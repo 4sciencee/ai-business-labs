@@ -16,27 +16,97 @@
       line-height: 1.7;
     }
 
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(20, 20, 20, 0.92);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      padding: 0 24px;
+    }
+
+    .nav-inner {
+      max-width: 960px;
+      height: 60px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .nav-brand {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-brand span { color: #E50914; }
+
+    .nav-meta {
+      color: #777;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .nav-back {
+      color: #b3b3b3;
+      text-decoration: none;
+      font-size: 0.86rem;
+      transition: color 0.18s;
+      white-space: nowrap;
+    }
+
+    .nav-back:hover { color: #fff; }
+
     /* ── Hero Banner ── */
     .hero {
-      background: linear-gradient(135deg, #1a1a1a 0%, #2d0000 60%, #E50914 100%);
-      padding: 70px 40px 50px;
-      text-align: center;
-      border-bottom: 3px solid #E50914;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(229, 9, 20, 0.22), transparent 34%),
+        linear-gradient(135deg, #171717 0%, #161111 60%, #220606 100%);
+      padding: 86px 24px 64px;
+      text-align: left;
+      border-bottom: 1px solid rgba(229, 9, 20, 0.35);
+    }
+
+    .hero-inner {
+      max-width: 960px;
+      margin: 0 auto;
     }
 
     .hero .label {
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: #E50914;
-      margin-bottom: 12px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .hero .label::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #E50914;
     }
 
     .hero h1 {
-      font-size: 2.6rem;
+      font-size: clamp(2.6rem, 6vw, 4.6rem);
       font-weight: 800;
       color: #ffffff;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
+      line-height: 1.05;
+      max-width: 760px;
     }
 
     .hero h1 span { color: #E50914; }
@@ -45,16 +115,17 @@
       font-size: 1.05rem;
       color: #b3b3b3;
       max-width: 680px;
-      margin: 0 auto 22px;
+      margin: 0 0 26px;
     }
 
     .badge {
       display: inline-block;
-      background: #E50914;
-      color: #fff;
+      background: rgba(229, 9, 20, 0.12);
+      color: #f4c6c9;
       font-size: 0.78rem;
       font-weight: 700;
-      padding: 5px 14px;
+      padding: 7px 14px;
+      border: 1px solid rgba(229, 9, 20, 0.32);
       border-radius: 20px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -264,20 +335,38 @@
       border-top: 1px solid #222;
     }
 
+    @media (max-width: 640px) {
+      nav { padding: 0 18px; }
+      .nav-inner { height: 56px; }
+      .nav-meta { display: none; }
+      .hero { padding: 64px 20px 48px; }
+      .hero p { font-size: 1rem; }
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- ── Hero ── -->
+  <nav aria-label="Page navigation">
+    <div class="nav-inner">
+      <a class="nav-brand" href="../"><span>AI Business</span> Labs</a>
+      <div class="nav-meta">Lab 01 - MIS 432</div>
+      <a class="nav-back" href="../">Back to Labs</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
   <div class="hero">
-    <div class="label">MIS 432 · Lab #2</div>
-    <h1>Netflix <span>A/B Testing</span> Lab</h1>
-    <p>
-      A simplified simulation of Netflix's artwork experimentation system —
-      built to demonstrate how organizations use data to close the
-      prediction-decision gap.
-    </p>
-    <span class="badge">Experimentation &amp; Decision-Making in AI Systems</span>
+    <div class="hero-inner">
+      <div class="label">MIS 432 - Canvas Lab #2</div>
+      <h1>Netflix Artwork <span>A/B Testing</span></h1>
+      <p>
+        A simplified simulation of Netflix's artwork experimentation system,
+        built to demonstrate how organizations use data to close the
+        prediction-decision gap.
+      </p>
+      <span class="badge">Experimentation &amp; Decision-Making in AI Systems</span>
+    </div>
   </div>
 
   <div class="container">
@@ -288,7 +377,7 @@
       Netflix has over 300 million subscribers and thousands of titles. When a user
       opens the app, they have roughly <strong style="color:#fff">90 seconds</strong>
       to find something before abandoning the session. The single biggest factor
-      in whether a user clicks a title is the <strong style="color:#fff">artwork</strong> —
+      in whether a user clicks a title is the <strong style="color:#fff">artwork</strong>,
       the thumbnail image associated with it.
     </p>
     <p>
@@ -326,14 +415,14 @@
       <div class="chart-card">
         <img src="results/ctr_comparison.png" alt="CTR Comparison Chart" />
         <div class="chart-caption">
-          Figure 1 — Click-Through Rate comparison between Artwork A (control)
+          Figure 1 - Click-Through Rate comparison between Artwork A (control)
           and Artwork B (treatment).
         </div>
       </div>
       <div class="chart-card">
         <img src="results/significance_test.png" alt="Statistical Significance Chart" />
         <div class="chart-caption">
-          Figure 2 — P-value vs. significance threshold (α = 0.05).
+          Figure 2 - P-value vs. significance threshold (alpha = 0.05).
           A p-value below 0.05 confirms the result is statistically significant.
         </div>
       </div>
@@ -361,9 +450,9 @@
           <td>Compares click counts across two groups</td>
         </tr>
         <tr>
-          <td>Significance Threshold (α)</td>
+          <td>Significance Threshold (alpha)</td>
           <td>0.05</td>
-          <td>Industry standard — 5% chance tolerance</td>
+          <td>Industry standard - 5% chance tolerance</td>
         </tr>
         <tr>
           <td>P-Value</td>
@@ -372,7 +461,7 @@
         </tr>
         <tr>
           <td>Conclusion</td>
-          <td class="highlight">Significant ✅</td>
+          <td class="highlight">Significant</td>
           <td>Difference is real, not due to chance</td>
         </tr>
       </tbody>
@@ -381,10 +470,10 @@
     <!-- ── Decision ── -->
     <div class="section-title">Business Decision</div>
     <div class="decision-box">
-      <h3>✅ Recommendation: Deploy Artwork B Platform-Wide</h3>
+      <h3>Recommendation: Deploy Artwork B Platform-Wide</h3>
       <p>
         The experiment confirmed that Artwork B produced a statistically significant
-        improvement in click-through rate over Artwork A — a 6 percentage point
+        improvement in click-through rate over Artwork A - a 6 percentage point
         increase representing a <strong>+25% lift</strong>. The p-value fell well
         below the 0.05 threshold, meaning this result is unlikely to be due to
         random chance. Netflix should immediately deploy Artwork B as the default
@@ -401,7 +490,7 @@
       <tbody>
         <tr><td>Netflix Subscribers</td><td>300,000,000</td></tr>
         <tr><td>Est. Daily Impressions (10%)</td><td>30,000,000</td></tr>
-        <tr><td>CTR Improvement (A → B)</td><td>+6 percentage points</td></tr>
+        <tr><td>CTR Improvement (A to B)</td><td>+6 percentage points</td></tr>
         <tr><td>Projected Extra Clicks / Day</td><td class="highlight">~1,800,000</td></tr>
       </tbody>
     </table>
@@ -409,7 +498,7 @@
     <!-- ── AI Factory ── -->
     <div class="section-title">AI Factory Connection</div>
     <p>
-      This experiment maps directly to the AI Factory framework — the model through
+      This experiment maps directly to the AI Factory framework - the model through
       which organizations convert raw data into measurable business value.
     </p>
     <div class="pipeline">
@@ -417,22 +506,22 @@
         <div class="pipe-label">Data</div>
         <div class="pipe-value">1,000 simulated user clicks</div>
       </div>
-      <div class="pipe-arrow">→</div>
+      <div class="pipe-arrow">-&gt;</div>
       <div class="pipe-step">
         <div class="pipe-label">Model</div>
         <div class="pipe-value">Chi-Square statistical test</div>
       </div>
-      <div class="pipe-arrow">→</div>
+      <div class="pipe-arrow">-&gt;</div>
       <div class="pipe-step">
         <div class="pipe-label">Prediction</div>
         <div class="pipe-value">Artwork B has higher CTR</div>
       </div>
-      <div class="pipe-arrow">→</div>
+      <div class="pipe-arrow">-&gt;</div>
       <div class="pipe-step">
         <div class="pipe-label">Decision</div>
         <div class="pipe-value">Deploy Artwork B</div>
       </div>
-      <div class="pipe-arrow">→</div>
+      <div class="pipe-arrow">-&gt;</div>
       <div class="pipe-step">
         <div class="pipe-label">Value</div>
         <div class="pipe-value">~1.8M extra clicks/day</div>
@@ -444,14 +533,14 @@
     <div class="concept-grid">
       <div class="concept-card">
         <h4>Prediction-Decision Gap</h4>
-        <p>A model can predict which artwork might perform better — but only
+        <p>A model can predict which artwork might perform better, but only
         experimentation provides the evidence needed to act on that prediction
         with confidence at scale.</p>
       </div>
       <div class="concept-card">
         <h4>Randomization</h4>
         <p>Users were randomly assigned to groups so any difference in clicks
-        can be attributed to the artwork itself — not to who the users are.</p>
+        can be attributed to the artwork itself, not to who the users are.</p>
       </div>
       <div class="concept-card">
         <h4>Statistical Significance</h4>
@@ -461,7 +550,7 @@
       <div class="concept-card">
         <h4>Explore vs. Exploit</h4>
         <p>The experiment phase (explore) tested both options. Deploying the
-        winner platform-wide is the exploit phase — using what works to
+        winner platform-wide is the exploit phase, using what works to
         maximize outcomes.</p>
       </div>
     </div>
@@ -469,7 +558,7 @@
   </div>
 
   <footer>
-    MIS 432 · Lab #2 · Experimentation and Decision-Making in AI Systems
+    MIS 432 - Canvas Lab #2 - Experimentation and Decision-Making in AI Systems
   </footer>
 
 </body>
