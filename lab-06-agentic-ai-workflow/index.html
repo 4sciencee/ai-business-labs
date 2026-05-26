@@ -289,9 +289,7 @@
     }
 
     .hero-card {
-      display: flex;
-      gap: 12px;
-      align-items: baseline;
+      display: block;
       max-width: 760px;
       margin-top: 18px;
       border: 1px solid rgba(255, 255, 255, 0.18);
@@ -302,14 +300,20 @@
 
     .hero-card strong {
       display: block;
-      flex: 0 0 auto;
-      margin-bottom: 0;
+      margin-bottom: 8px;
       color: #fff;
       font-size: 0.92rem;
     }
 
     .hero-card p {
       margin: 0;
+      color: #ffe5ee;
+      font-size: 0.92rem;
+    }
+
+    .hero-card ul {
+      margin: 8px 0 0 20px;
+      padding: 0;
       color: #ffe5ee;
       font-size: 0.92rem;
     }
@@ -673,8 +677,12 @@
         <p class="hero-meta">Carlos Palomares - Western Washington University</p>
       </div>
       <div class="hero-card">
-        <strong>Project Focus</strong>
-        <p>Two n8n agents: one for insurance denial appeals and one for planning a concert weekend in Seattle.</p>
+        <strong>Project Focus:</strong>
+        <p>Two n8n agents</p>
+        <ul>
+          <li>Insurance denial appeals</li>
+          <li>Planning concert weekend in Seattle</li>
+        </ul>
       </div>
     </div>
   </header>
