@@ -85,6 +85,17 @@ a { color: inherit; }
   padding: 7px 11px; transition: border-color 0.18s, background 0.18s;
 }
 .repo-link:hover { border-color: var(--green); background: rgba(29,185,84,0.18); }
+.nav-actions a {
+  display: inline-block; font-size: 12px;
+  transition: color 0.18s, transform 0.18s;
+}
+.repo-link,
+.repo-link:hover {
+  border: 0; background: transparent; padding: 0;
+}
+.nav-actions a:hover {
+  color: #fff; transform: scale(1.06);
+}
 .lab-menu { position: relative; flex: 0 0 auto; }
 .lab-menu-button {
   width: 28px; height: 28px; display: grid; place-content: center; gap: 4px;
