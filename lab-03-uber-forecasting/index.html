@@ -150,7 +150,9 @@
     .nav-actions a:hover {
       color: #fff;
       transform: scale(1.06);
-    }.lab-menu {
+    }
+
+    .lab-menu {
     position: relative;
     flex: 0 0 auto;
   }
@@ -690,13 +692,196 @@
 
   /* ─── SCROLL ANIMATION ──────────────────────────────────────── */
   .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
+    opacity: 1;
+    transform: translateY(0);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
   .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Polished Uber layout rhythm */
+  :root {
+    --content-width: 1100px;
+    --gutter: clamp(22px, 4vw, 40px);
+    --section-gap: clamp(70px, 7vw, 92px);
+    --card-radius: 8px;
+    --card-pad: clamp(24px, 3vw, 34px);
+  }
+
+  body > nav {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .nav-back,
+  .repo-link,
+  .nav-actions a {
+    color: var(--gray-mid);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    transition: color 0.18s, transform 0.18s;
+  }
+
+  .nav-actions a:hover {
+    color: var(--white);
+    transform: scale(1.06);
+  }
+
+  .hero,
+  section,
+  .section-nav-inner {
+    max-width: var(--content-width);
+    width: 100%;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+
+  .hero {
+    padding-top: clamp(92px, 9vw, 124px);
+    padding-bottom: clamp(86px, 8vw, 108px);
+  }
+
+  h1 {
+    font-size: clamp(4.2rem, 8.3vw, 7.25rem);
+    line-height: 0.92;
+    max-width: 860px;
+    margin-bottom: 34px;
+  }
+
+  .hero-sub {
+    max-width: 680px;
+    margin-bottom: 46px;
+    line-height: 1.75;
+  }
+
+  .hero-meta {
+    gap: 42px;
+  }
+
+  .meta-value {
+    font-weight: 700;
+  }
+
+  .section-nav {
+    width: 100%;
+    max-width: none;
+  }
+
+  .section-nav-inner {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  section {
+    padding-top: var(--section-gap);
+    padding-bottom: var(--section-gap);
+  }
+
+  .section-num {
+    margin-bottom: 14px;
+  }
+
+  h2 {
+    font-size: clamp(2.35rem, 4.5vw, 3.55rem);
+    line-height: 1;
+    margin-bottom: 26px;
+  }
+
+  p,
+  .stress-finding,
+  .reflection-text {
+    max-width: 840px;
+    font-size: 1rem;
+    line-height: 1.82;
+  }
+
+  .divider {
+    margin-bottom: 28px;
+  }
+
+  .card,
+  .chart-wrapper,
+  .memo-card,
+  .stat-card,
+  .stress-box,
+  .alert-box,
+  .reflection-card {
+    border-radius: var(--card-radius);
+  }
+
+  .card,
+  .chart-wrapper,
+  .stress-box,
+  .reflection-card {
+    padding: var(--card-pad);
+  }
+
+  .chart-wrapper {
+    margin-top: 36px;
+  }
+
+  .chart-caption {
+    max-width: 900px;
+  }
+
+  .stat-grid {
+    gap: 18px;
+    margin-top: 34px;
+  }
+
+  .stat-card {
+    min-height: 150px;
+    padding: 28px 22px 24px;
+  }
+
+  .stat-num {
+    font-size: clamp(2.6rem, 4vw, 3.25rem);
+  }
+
+  .memo-card {
+    margin-top: 32px;
+  }
+
+  .memo-header {
+    padding: 16px 28px;
+  }
+
+  .memo-body {
+    padding: 30px;
+  }
+
+  .stress-box {
+    margin-top: 32px;
+  }
+
+  .pull-quote {
+    max-width: 780px;
+    margin: 36px 0 0;
+  }
+
+  .alert-box {
+    max-width: 840px;
+    padding: 24px 28px;
+    margin-top: 30px;
+  }
+
+  .reflection-card {
+    margin-top: 32px;
+  }
+
+  .tag {
+    border-radius: 4px;
+    padding: 6px 10px;
+  }
+
+  footer {
+    padding: 44px var(--gutter);
   }
 
   @media (max-width: 640px) {
@@ -705,8 +890,55 @@
     .nav-actions { display: none; }
     .lab-menu-panel { width: min(310px, calc(100vw - 40px)); }
     .section-nav { top: 58px; }
-    .section-nav-inner { padding: 0 20px; }
-    section, .hero { padding: 60px 20px; }
+    .section-nav-inner {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    section,
+    .hero {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+    h1 {
+      width: min(346px, calc(100vw - 44px));
+      max-width: 100%;
+      font-size: clamp(3.55rem, 16vw, 4.4rem);
+      line-height: 0.94;
+      overflow-wrap: break-word;
+    }
+    .hero-sub,
+    p,
+    .stress-finding,
+    .reflection-text {
+      width: min(346px, calc(100vw - 44px));
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px 18px;
+    }
+    .meta-value {
+      overflow-wrap: anywhere;
+    }
+    h2 {
+      width: min(346px, calc(100vw - 44px));
+      font-size: clamp(2.7rem, 13vw, 3.3rem);
+      overflow-wrap: break-word;
+    }
+    .card,
+    .chart-wrapper,
+    .stress-box,
+    .reflection-card {
+      padding: 24px;
+    }
+    .stat-grid {
+      grid-template-columns: 1fr;
+    }
+    .stat-card {
+      min-height: 130px;
+    }
     .memo-body { font-size: 0.62rem; white-space: pre-wrap; }
   }
 </style>
