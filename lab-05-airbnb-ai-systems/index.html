@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carlos Palomares | Airbnb AI Systems Analysis</title>
+  <title>Airbnb AI Systems Analysis | MIS 432</title>
   <style>
     :root {
       --airbnb: #ff5a5f;
@@ -29,10 +29,48 @@
       line-height: 1.65;
     }
 
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(34,34,34,0.96);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .top-nav-inner {
+      max-width: 1120px;
+      height: 58px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .top-brand,
+    .top-back,
+    .top-meta {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .top-brand,
+    .top-back {
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .top-brand span { color: var(--airbnb); }
+    .top-back { color: rgba(255,255,255,0.7); transition: color 0.18s; }
+    .top-back:hover { color: white; }
+    .top-meta { color: rgba(255,255,255,0.48); font-weight: 700; }
+
     header {
       background: linear-gradient(135deg, #222222 0%, #343434 60%, #3b1f20 100%);
       color: white;
-      padding: 72px 28px 64px;
+      padding: 78px 28px 66px;
     }
     .hero {
       max-width: 1120px;
@@ -62,6 +100,14 @@
       margin-top: 18px;
       color: rgba(255,255,255,0.72);
       font-size: 16px;
+      max-width: 720px;
+    }
+    .hero-meta {
+      margin-top: 10px;
+      color: rgba(255,255,255,0.48);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
     .hero-grid {
       display: flex;
@@ -80,7 +126,7 @@
 
     nav {
       position: sticky;
-      top: 0;
+      top: 58px;
       z-index: 20;
       background: rgba(255,255,255,0.96);
       border-bottom: 1px solid var(--line);
@@ -117,7 +163,7 @@
       align-items: start;
     }
     main { min-width: 0; }
-    aside { position: sticky; top: 72px; }
+    aside { position: sticky; top: 130px; }
 
     .summary, .card, .sidebar-card, .verdict-card {
       background: var(--card);
@@ -379,6 +425,7 @@
     footer a { color: #ffd6d8; }
 
     @media (max-width: 900px) {
+      .top-meta, .top-back { display: none; }
       .page { grid-template-columns: 1fr; }
       aside { position: static; order: -1; }
       .metric-row, .city-grid, .finance { grid-template-columns: 1fr; }
@@ -387,11 +434,20 @@
   </style>
 </head>
 <body>
+  <div class="top-nav">
+    <div class="top-nav-inner">
+      <a class="top-brand" href="../"><span>AI Business</span> Labs</a>
+      <div class="top-meta">Lab 05 - MIS 432</div>
+      <a class="top-back" href="../">Back to Labs</a>
+    </div>
+  </div>
+
   <header>
     <div class="hero">
-      <div class="eyebrow">Valencia, Spain · Portfolio Case Study</div>
-      <h1>Airbnb AI Systems Analysis:<br><span>New Host Evaluation</span></h1>
-      <div class="subtitle">Carlos Palomares · MIS 432 · AI in Business · Western Washington University</div>
+      <div class="eyebrow">Lab 05 - Canvas Lab #6 - MIS 432</div>
+      <h1>Airbnb AI Systems Analysis</h1>
+      <div class="subtitle">New host evaluation for a 2-bedroom apartment in Ruzafa, Valencia.</div>
+      <div class="hero-meta">Carlos Palomares - Western Washington University</div>
       <div class="hero-grid">
         <div class="hero-pill">7 Evaluation Modules</div>
         <div class="hero-pill">AI Systems + Business Risk</div>
