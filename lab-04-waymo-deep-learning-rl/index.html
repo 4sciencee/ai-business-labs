@@ -162,9 +162,10 @@
 
   .step-nav-inner {
     display: flex;
-    gap: 4px;
+    gap: 8px;
     flex-wrap: nowrap;
     align-items: center;
+    justify-content: space-between;
     overflow-x: auto;
     scrollbar-width: none;
   }
@@ -175,12 +176,12 @@
 
   .step-nav a {
     font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.08em;
+    font-size: 9px;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--charcoal-light);
     text-decoration: none;
-    padding: 14px 12px;
+    padding: 14px 4px;
     border-bottom: 2px solid transparent;
     transition: color 0.18s ease, border-bottom-color 0.18s ease;
     white-space: nowrap;
@@ -467,7 +468,8 @@
     .situation-block { padding: 24px 20px; }
     .learnings-list li { grid-template-columns: 1fr; gap: 6px; }
     .contact-inner { flex-direction: column; align-items: flex-start; }
-    .step-nav-inner { gap: 4px; }
+    .step-nav-inner { justify-content: flex-start; gap: 4px; }
+    .step-nav a { padding: 14px 12px; }
   }
 </style>
 </head>
