@@ -146,32 +146,29 @@
     .section-nav-inner {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 14px 40px;
+      padding: 0 40px;
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
-      gap: 10px;
+      gap: 4px;
+      overflow-x: auto;
     }
 
     .section-nav a {
-      color: #cfcfcf;
-      background: #1f1f1f;
-      border: 1px solid #343434;
-      border-radius: 999px;
+      color: #b3b3b3;
       text-decoration: none;
-      font-size: 0.65rem;
-      font-weight: 800;
+      font-size: 0.78rem;
+      font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 7px 13px;
+      padding: 14px 12px;
       white-space: nowrap;
-      transition: color 0.18s, border-color 0.18s, background 0.18s;
+      border-bottom: 2px solid transparent;
+      transition: color 0.18s, border-bottom-color 0.18s;
     }
 
     .section-nav a:hover {
       color: #fff;
-      border-color: #E50914;
-      background: rgba(229, 9, 20, 0.18);
+      border-bottom-color: #E50914;
     }
 
     .hero-meta-item {
@@ -404,7 +401,7 @@
       .nav-inner { height: 56px; }
       .nav-meta, .nav-back { display: none; }
       .section-nav { top: 56px; }
-      .section-nav-inner { padding: 12px 20px; flex-wrap: nowrap; overflow-x: auto; }
+      .section-nav-inner { padding: 0 20px; }
       .hero { padding: 60px 20px; }
       .hero-inner { padding: 0; }
       .container { padding: 40px 20px 70px; }
