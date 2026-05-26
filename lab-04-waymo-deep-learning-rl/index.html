@@ -236,12 +236,22 @@
   }
 
   .header-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-family: 'DM Mono', monospace;
     font-size: 11px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--green);
     margin-bottom: 20px;
+  }
+  .header-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--green);
+    flex: 0 0 auto;
   }
 
   .header-name {
@@ -631,7 +641,7 @@
 
 <header class="site-header">
   <div class="container">
-    <p class="header-eyebrow">Lab 04 - Canvas Lab #5 - MIS 432</p>
+    <p class="header-eyebrow">LAB 04</p>
     <h1 class="header-name">Waymo<br><span>Strategy</span> Analysis</h1>
     <p class="header-subtitle">Deep Learning, Reinforcement Learning, and Autonomous Vehicle Strategy</p>
     <p class="header-meta">Carlos Palomares - Western Washington University</p>

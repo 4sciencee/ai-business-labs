@@ -209,16 +209,25 @@
       padding: 0 40px;
     }
     .eyebrow {
-      display: inline-block;
-      color: #ffd6d8;
-      background: rgba(255,90,95,0.16);
-      border: 1px solid rgba(255,90,95,0.35);
-      padding: 7px 13px;
-      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--airbnb);
+      background: transparent;
+      border: 0;
+      padding: 0;
+      border-radius: 0;
       font-size: 12px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 22px;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--airbnb);
+      flex: 0 0 auto;
     }
     h1 {
       margin: 0;
@@ -603,7 +612,7 @@
 
   <header>
     <div class="hero">
-      <div class="eyebrow">Lab 05 - Canvas Lab #6 - MIS 432</div>
+      <div class="eyebrow">LAB 05</div>
       <h1>Airbnb<br>AI <span>Systems</span> Analysis</h1>
       <div class="subtitle">New host evaluation for a 2-bedroom apartment in Ruzafa, Valencia.</div>
       <div class="hero-meta">Carlos Palomares - Western Washington University</div>

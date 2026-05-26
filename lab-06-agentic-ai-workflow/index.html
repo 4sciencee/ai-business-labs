@@ -241,12 +241,22 @@
     }
 
     .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       margin: 0 0 12px;
-      color: #ffdce7;
+      color: #ff7da2;
       font-size: 0.88rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: #ff7da2;
+      flex: 0 0 auto;
     }
 
     h1,
@@ -671,7 +681,7 @@
   <header class="hero">
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow">Lab 06 - Canvas Lab #7 - MIS 432</p>
+        <p class="eyebrow">LAB 06</p>
         <h1>Agentic AI Workflow</h1>
         <p class="subtitle">Building n8n agents for insurance denial appeals and concert weekend planning.</p>
         <p class="hero-meta">Carlos Palomares - Western Washington University</p>
