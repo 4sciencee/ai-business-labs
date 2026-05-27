@@ -5,414 +5,637 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Business Labs</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    :root {
+      --bg: #0d0a12;
+      --panel: #15101a;
+      --panel-soft: #19121d;
+      --ink: #fff7f0;
+      --muted: #b89aa3;
+      --quiet: #7f6470;
+      --line: rgba(255, 255, 255, 0.07);
+      --sunset: #ff7a45;
+      --coral: #ff4f7b;
+      --gold: #f6b85a;
+      --rose: #ff8fb0;
+      --violet: #9c7cff;
+      --sky: #7bbcff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0a1628;
-      color: #ffffff;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
     }
 
     .page {
       min-height: 100vh;
-      padding-bottom: 3rem;
-      background: #0a1628;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(255, 79, 123, 0.12), transparent 28%),
+        radial-gradient(circle at 82% 12%, rgba(246, 184, 90, 0.08), transparent 30%),
+        linear-gradient(180deg, #0d0a12 0%, #100b15 52%, #0d0a12 100%);
     }
 
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 4.5rem 2rem 3.5rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-      background: #0a1628;
-    }
-
-    .hero-grid-bg {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(55, 138, 221, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(55, 138, 221, 0.06) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      width: min(960px, calc(100% - 48px));
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
-    .wwu-badge {
-      display: inline-flex;
+    .nav {
+      display: flex;
       align-items: center;
-      gap: 6px;
-      margin-bottom: 1.5rem;
-      padding: 6px 14px;
-      border: 1px solid rgba(55, 138, 221, 0.3);
-      border-radius: 100px;
-      background: rgba(55, 138, 221, 0.12);
+      justify-content: space-between;
+      height: 50px;
+      padding: 0 2rem;
+      border-bottom: 1px solid var(--line);
+      background: rgba(13, 10, 18, 0.78);
+      backdrop-filter: blur(14px);
     }
 
-    .wwu-dot {
-      display: inline-block;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #378add;
+    .nav-brand,
+    .nav-gh,
+    .mono {
+      font-family: "IBM Plex Mono", Consolas, monospace;
     }
 
-    .wwu-badge span:last-child {
-      color: #85b7eb;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-    }
-
-    h1 {
-      margin-bottom: 1rem;
-      color: #ffffff;
-      font-size: 56px;
-      font-weight: 600;
-      line-height: 1.2;
-    }
-
-    h1 span {
-      color: #378add;
-    }
-
-    .hero-desc {
-      max-width: 720px;
-      color: #8796b3;
-      font-size: 18px;
-      line-height: 1.6;
-    }
-
-    .stat-bar {
-      display: flex;
-      gap: 3.5rem;
-      margin-top: 2.25rem;
-      padding-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .stat-num {
-      color: #ffffff;
-      font-size: 30px;
-      font-weight: 600;
-    }
-
-    .stat-label {
-      color: #4e6080;
-      font-size: 13px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .labs-section {
-      width: min(960px, calc(100% - 48px));
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 2.5rem 0 0;
-    }
-
-    .section-label {
-      margin-bottom: 1.25rem;
-      color: #6c7d9b;
-      font-size: 13px;
+    .nav-brand {
+      color: var(--rose);
+      font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    .lab-card {
+    .nav-gh {
+      border: 1px solid rgba(255, 122, 69, 0.18);
+      border-radius: 3px;
+      padding: 4px 10px;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.15s, border-color 0.15s, transform 0.15s;
+    }
+
+    .nav-gh:hover,
+    .nav-gh:focus-visible {
+      color: var(--sunset);
+      border-color: rgba(255, 122, 69, 0.42);
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 4.25rem 2rem 3.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+    }
+
+    .sunset-bar {
+      display: flex;
+      gap: 3px;
+      width: fit-content;
+      margin-bottom: 2rem;
+    }
+
+    .sunset-seg {
+      height: 2px;
+      border-radius: 2px;
+    }
+
+    .hero-eyebrow {
       display: flex;
       align-items: center;
+      gap: 10px;
+      margin-bottom: 1.4rem;
+      color: var(--sunset);
+      font-family: "IBM Plex Mono", Consolas, monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .hero-eyebrow::after {
+      content: "";
+      display: block;
+      width: 48px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--sunset), transparent);
+    }
+
+    h1 {
+      max-width: 680px;
+      margin-bottom: 1.2rem;
+      color: var(--ink);
+      font-size: clamp(44px, 6.2vw, 68px);
+      font-weight: 700;
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+    }
+
+    h1 .line2 {
+      display: block;
+      color: var(--sunset);
+    }
+
+    .hero-desc {
+      max-width: 590px;
+      margin-bottom: 2.4rem;
+      color: var(--muted);
+      font-size: 15.5px;
+      font-weight: 300;
+      line-height: 1.78;
+    }
+
+    .meta-strip {
+      display: flex;
+      width: fit-content;
+      max-width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.075);
+      border-radius: 4px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .meta-cell {
+      min-width: 112px;
+      padding: 12px 18px;
+      border-right: 1px solid rgba(255, 255, 255, 0.065);
+    }
+
+    .meta-cell:last-child {
+      border-right: 0;
+    }
+
+    .meta-key {
+      margin-bottom: 4px;
+      color: var(--quiet);
+      font-family: "IBM Plex Mono", Consolas, monospace;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .meta-val {
+      color: var(--gold);
+      font-family: "IBM Plex Mono", Consolas, monospace;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .labs {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1.35rem;
+    }
+
+    .section-title {
+      color: var(--coral);
+      font-family: "IBM Plex Mono", Consolas, monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.055);
+    }
+
+    .lab-card {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr) auto;
+      align-items: center;
       gap: 1.25rem;
-      min-height: 96px;
-      margin-bottom: 14px;
-      padding: 1.35rem 1.5rem;
-      border: 1px solid rgba(55, 138, 221, 0.12);
-      border-radius: 10px;
-      background: #0f1e33;
+      padding: 1.1rem 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+      border-radius: 3px;
       color: inherit;
       text-decoration: none;
-      transition: border-color 0.15s, background 0.15s, transform 0.15s;
+      transition: background 0.12s, transform 0.12s;
+    }
+
+    .lab-card:first-of-type {
+      border-top: 1px solid rgba(255, 255, 255, 0.055);
     }
 
     .lab-card:hover,
     .lab-card:focus-visible {
-      border-color: rgba(55, 138, 221, 0.4);
-      background: #112035;
-      transform: translateY(-1px);
+      background: rgba(255, 122, 69, 0.055);
       outline: none;
+      transform: translateX(2px);
     }
 
-    .lab-num-badge {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      width: 54px;
-      height: 54px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
+    .lab-num {
+      color: rgba(255, 122, 69, 0.5);
+      font-family: "IBM Plex Mono", Consolas, monospace;
+      font-size: 11px;
+      font-weight: 600;
+      text-align: center;
+      transition: color 0.12s;
     }
 
-    .num-blue {
-      border: 1px solid rgba(55, 138, 221, 0.22);
-      background: rgba(55, 138, 221, 0.12);
-      color: #378add;
+    .lab-card:hover .lab-num,
+    .lab-card:focus-visible .lab-num {
+      color: var(--sunset);
     }
 
-    .num-teal {
-      border: 1px solid rgba(29, 158, 117, 0.22);
-      background: rgba(29, 158, 117, 0.12);
-      color: #1d9e75;
-    }
-
-    .lab-meta {
-      flex: 1;
+    .lab-body {
       min-width: 0;
     }
 
-    .lab-tag {
+    .lab-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
       margin-bottom: 5px;
-      color: #60718f;
-      font-size: 12px;
+    }
+
+    .lab-tag {
+      color: var(--quiet);
+      font-family: "IBM Plex Mono", Consolas, monospace;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .topic-chip {
+      border-radius: 3px;
+      padding: 3px 8px;
+      font-family: "IBM Plex Mono", Consolas, monospace;
+      font-size: 9px;
       font-weight: 600;
       letter-spacing: 0.07em;
       text-transform: uppercase;
     }
 
-    .lab-title {
-      color: #d3e0f2;
-      font-size: 18px;
+    .chip-coral {
+      border: 1px solid rgba(255, 79, 123, 0.32);
+      background: rgba(255, 79, 123, 0.12);
+      color: #ff9cb8;
+    }
+
+    .chip-sunset {
+      border: 1px solid rgba(255, 122, 69, 0.32);
+      background: rgba(255, 122, 69, 0.12);
+      color: #ffad88;
+    }
+
+    .chip-gold {
+      border: 1px solid rgba(246, 184, 90, 0.3);
+      background: rgba(246, 184, 90, 0.12);
+      color: #f6c978;
+    }
+
+    .chip-violet {
+      border: 1px solid rgba(156, 124, 255, 0.3);
+      background: rgba(156, 124, 255, 0.12);
+      color: #c4b5ff;
+    }
+
+    .chip-sky {
+      border: 1px solid rgba(123, 188, 255, 0.3);
+      background: rgba(123, 188, 255, 0.11);
+      color: #acd6ff;
+    }
+
+    .lab-title-text {
+      color: #eadce1;
+      font-size: 14px;
       font-weight: 600;
       line-height: 1.35;
+      transition: color 0.12s;
+      overflow-wrap: anywhere;
     }
 
-    .lab-chip {
-      flex-shrink: 0;
-      padding: 5px 12px;
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 600;
-      white-space: nowrap;
+    .lab-card:hover .lab-title-text,
+    .lab-card:focus-visible .lab-title-text {
+      color: #fff7f0;
     }
 
-    .chip-ml {
-      border: 1px solid rgba(29, 158, 117, 0.2);
-      background: rgba(29, 158, 117, 0.1);
-      color: #5dcaa5;
+    .lab-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .chip-data {
-      border: 1px solid rgba(55, 138, 221, 0.2);
-      background: rgba(55, 138, 221, 0.1);
-      color: #85b7eb;
+    .lab-company {
+      color: rgba(255, 122, 69, 0.5);
+      font-family: "IBM Plex Mono", Consolas, monospace;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.12s;
     }
 
-    .chip-ai {
-      border: 1px solid rgba(127, 119, 221, 0.2);
-      background: rgba(127, 119, 221, 0.1);
-      color: #afa9ec;
+    .lab-arrow {
+      color: rgba(255, 122, 69, 0.45);
+      font-size: 14px;
+      transition: color 0.12s, transform 0.12s;
     }
 
-    .arrow-icon {
-      flex-shrink: 0;
-      color: #3e5272;
-      font-size: 22px;
-      line-height: 1;
+    .lab-card:hover .lab-company,
+    .lab-card:focus-visible .lab-company,
+    .lab-card:hover .lab-arrow,
+    .lab-card:focus-visible .lab-arrow {
+      color: var(--sunset);
     }
 
-    .lab-card:hover .arrow-icon,
-    .lab-card:focus-visible .arrow-icon {
-      color: #378add;
+    .lab-card:hover .lab-arrow,
+    .lab-card:focus-visible .lab-arrow {
+      transform: translateX(2px);
     }
 
     .footer {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: space-between;
-      width: min(960px, calc(100% - 48px));
-      max-width: 960px;
-      margin: 2rem auto 0;
-      padding: 1.5rem 0 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 2.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.055);
       gap: 1rem;
     }
 
-    .footer-text,
-    .footer-logo {
-      color: #4e6080;
-      font-size: 14px;
+    .footer-left p,
+    .footer-sig {
+      color: rgba(184, 154, 163, 0.62);
+      font-family: "IBM Plex Mono", Consolas, monospace;
+      font-size: 10px;
+      letter-spacing: 0.04em;
+      line-height: 1.9;
     }
 
-    .footer-logo {
-      font-weight: 600;
+    .footer-sig {
+      color: rgba(255, 122, 69, 0.65);
       white-space: nowrap;
     }
 
-    .footer-logo span {
-      color: #378add;
-    }
-
-    @media (max-width: 620px) {
-      .hero {
-        padding: 2.5rem 1rem 2rem;
+    @media (max-width: 700px) {
+      .nav {
+        padding: 0 1.25rem;
       }
 
-      .labs-section {
-        width: calc(100% - 32px);
-        padding: 1.5rem 0 0;
+      .nav-gh {
+        display: none;
       }
 
-      .hero-inner,
+      .hero,
+      .labs,
       .footer {
-        width: calc(100% - 32px);
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        width: 100vw;
+        max-width: 100vw;
+      }
+
+      .hero {
+        padding-top: 3rem;
+        padding-bottom: 2.4rem;
       }
 
       h1 {
-        font-size: 38px;
+        font-size: clamp(40px, 13vw, 54px);
       }
 
       .hero-desc {
-        font-size: 16px;
+        width: min(320px, calc(100vw - 56px));
+        max-width: min(320px, calc(100vw - 56px));
+        font-size: 15px;
+        white-space: normal !important;
+        overflow-wrap: anywhere;
+        word-break: break-word;
       }
 
-      .stat-bar {
-        gap: 1rem;
+      .meta-strip {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .meta-cell {
+        min-width: 0;
+      }
+
+      .meta-cell:nth-child(2) {
+        border-right: 0;
+      }
+
+      .meta-cell:nth-child(-n + 2) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.065);
       }
 
       .lab-card {
-        align-items: flex-start;
+        grid-template-columns: 34px minmax(0, 1fr);
         gap: 0.85rem;
-        min-height: 82px;
-        padding: 1rem;
+        width: 100%;
+        padding: 1rem 0;
       }
 
-      .lab-chip {
+      .lab-body,
+      .lab-tag-row,
+      .lab-title-text {
+        min-width: 0;
+        max-width: 100%;
+      }
+
+      .lab-title-text {
+        width: min(280px, calc(100vw - 104px));
+        white-space: normal !important;
+        word-break: break-word;
+      }
+
+      .lab-right {
         display: none;
       }
 
       .footer {
-        align-items: flex-start;
         flex-direction: column;
-        padding: 1.5rem 0 0;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
 <body>
   <div class="page">
+    <nav class="nav" aria-label="Main navigation">
+      <span class="nav-brand">AI Business Labs</span>
+      <a class="nav-gh" href="https://github.com/4sciencee/ai-business-labs" target="_blank" rel="noopener">GitHub &nearr;</a>
+    </nav>
+
     <header class="hero">
-      <div class="hero-grid-bg"></div>
-      <div class="hero-inner">
-        <div class="wwu-badge">
-          <span class="wwu-dot"></span>
-          <span>Western Washington University - MIS 432</span>
+      <div class="sunset-bar" aria-hidden="true">
+        <div class="sunset-seg" style="width:36px; background:#ff4f7b;"></div>
+        <div class="sunset-seg" style="width:22px; background:#ff7a45;"></div>
+        <div class="sunset-seg" style="width:14px; background:#f6b85a;"></div>
+        <div class="sunset-seg" style="width:28px; background:#9c7cff;"></div>
+        <div class="sunset-seg" style="width:10px; background:#7bbcff;"></div>
+      </div>
+
+      <div class="hero-eyebrow">Western Washington University</div>
+
+      <h1>Applied AI<span class="line2">in Business.</span></h1>
+
+      <p class="hero-desc">
+        Applied AI and machine learning labs for Western Washington University's MIS 432 course.
+        Each project connects a real business case to data, modeling, and decision-making.
+      </p>
+
+      <div class="meta-strip" aria-label="Course information">
+        <div class="meta-cell">
+          <div class="meta-key">Course</div>
+          <div class="meta-val">MIS 432</div>
         </div>
-        <h1><span>AI Business</span> Labs</h1>
-        <p class="hero-desc">Applied machine learning and AI coursework exploring real-world business applications, from recommendation systems to agentic workflows.</p>
-        <div class="stat-bar" aria-label="Course statistics">
-          <div class="stat-item">
-            <span class="stat-num">6</span>
-            <span class="stat-label">Labs</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num">6</span>
-            <span class="stat-label">Cases</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num">MIS 432</span>
-            <span class="stat-label">Course</span>
-          </div>
+        <div class="meta-cell">
+          <div class="meta-key">University</div>
+          <div class="meta-val">WWU</div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-key">Labs</div>
+          <div class="meta-val">06 total</div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-key">Focus</div>
+          <div class="meta-val">ML &rarr; Decisions</div>
         </div>
       </div>
     </header>
 
-    <main class="labs-section">
-      <p class="section-label">Applied AI Projects</p>
+    <main class="labs">
+      <div class="section-header">
+        <span class="section-title">Course Labs</span>
+        <div class="section-line"></div>
+      </div>
 
       <a class="lab-card" href="./lab-01-netflix-ab-testing/">
-        <div class="lab-num-badge num-blue">01</div>
-        <div class="lab-meta">
-          <div class="lab-tag">Lab 01</div>
-          <div class="lab-title">Netflix Artwork A/B Testing</div>
+        <span class="lab-num">01</span>
+        <div class="lab-body">
+          <div class="lab-tag-row">
+            <span class="lab-tag">Lab 01</span>
+            <span class="topic-chip chip-coral">A/B Testing</span>
+            <span class="topic-chip chip-gold">Experimentation</span>
+          </div>
+          <div class="lab-title-text">Netflix Artwork A/B Testing</div>
         </div>
-        <span class="lab-chip chip-data">Data</span>
-        <span class="arrow-icon" aria-hidden="true">&rarr;</span>
+        <div class="lab-right">
+          <span class="lab-company">Netflix</span>
+          <span class="lab-arrow" aria-hidden="true">&rarr;</span>
+        </div>
       </a>
 
       <a class="lab-card" href="./lab-02-spotify-recommendation-system/">
-        <div class="lab-num-badge num-teal">02</div>
-        <div class="lab-meta">
-          <div class="lab-tag">Lab 02</div>
-          <div class="lab-title">Spotify-Style Recommendation System and Wrapped</div>
+        <span class="lab-num">02</span>
+        <div class="lab-body">
+          <div class="lab-tag-row">
+            <span class="lab-tag">Lab 02</span>
+            <span class="topic-chip chip-sunset">ML RecSys</span>
+            <span class="topic-chip chip-sky">Personalization</span>
+          </div>
+          <div class="lab-title-text">Spotify-Style Recommendation System and Wrapped</div>
         </div>
-        <span class="lab-chip chip-ml">ML</span>
-        <span class="arrow-icon" aria-hidden="true">&rarr;</span>
+        <div class="lab-right">
+          <span class="lab-company">Spotify</span>
+          <span class="lab-arrow" aria-hidden="true">&rarr;</span>
+        </div>
       </a>
 
       <a class="lab-card" href="./lab-03-uber-forecasting/">
-        <div class="lab-num-badge num-blue">03</div>
-        <div class="lab-meta">
-          <div class="lab-tag">Lab 03</div>
-          <div class="lab-title">Forecasting and the Uber Factory</div>
+        <span class="lab-num">03</span>
+        <div class="lab-body">
+          <div class="lab-tag-row">
+            <span class="lab-tag">Lab 03</span>
+            <span class="topic-chip chip-sky">Forecasting</span>
+            <span class="topic-chip chip-gold">Operations</span>
+          </div>
+          <div class="lab-title-text">Forecasting and the Uber Factory</div>
         </div>
-        <span class="lab-chip chip-data">Data</span>
-        <span class="arrow-icon" aria-hidden="true">&rarr;</span>
+        <div class="lab-right">
+          <span class="lab-company">Uber</span>
+          <span class="lab-arrow" aria-hidden="true">&rarr;</span>
+        </div>
       </a>
 
       <a class="lab-card" href="./lab-04-waymo-deep-learning-rl/">
-        <div class="lab-num-badge num-teal">04</div>
-        <div class="lab-meta">
-          <div class="lab-tag">Lab 04</div>
-          <div class="lab-title">Deep Learning, Reinforcement Learning, and Waymo</div>
+        <span class="lab-num">04</span>
+        <div class="lab-body">
+          <div class="lab-tag-row">
+            <span class="lab-tag">Lab 04</span>
+            <span class="topic-chip chip-violet">Deep Learning</span>
+            <span class="topic-chip chip-sunset">Reinforcement RL</span>
+          </div>
+          <div class="lab-title-text">Deep Learning, Reinforcement Learning, and Waymo</div>
         </div>
-        <span class="lab-chip chip-ml">ML</span>
-        <span class="arrow-icon" aria-hidden="true">&rarr;</span>
+        <div class="lab-right">
+          <span class="lab-company">Waymo</span>
+          <span class="lab-arrow" aria-hidden="true">&rarr;</span>
+        </div>
       </a>
 
       <a class="lab-card" href="./lab-05-airbnb-ai-systems/">
-        <div class="lab-num-badge num-blue">05</div>
-        <div class="lab-meta">
-          <div class="lab-tag">Lab 05</div>
-          <div class="lab-title">Airbnb AI Systems Analysis</div>
+        <span class="lab-num">05</span>
+        <div class="lab-body">
+          <div class="lab-tag-row">
+            <span class="lab-tag">Lab 05</span>
+            <span class="topic-chip chip-coral">AI Systems</span>
+            <span class="topic-chip chip-violet">Trust & Safety</span>
+          </div>
+          <div class="lab-title-text">Airbnb AI Systems Analysis</div>
         </div>
-        <span class="lab-chip chip-ai">AI</span>
-        <span class="arrow-icon" aria-hidden="true">&rarr;</span>
+        <div class="lab-right">
+          <span class="lab-company">Airbnb</span>
+          <span class="lab-arrow" aria-hidden="true">&rarr;</span>
+        </div>
       </a>
 
       <a class="lab-card" href="./lab-06-agentic-ai-workflow/">
-        <div class="lab-num-badge num-teal">06</div>
-        <div class="lab-meta">
-          <div class="lab-tag">Lab 06</div>
-          <div class="lab-title">Agentic AI Workflow</div>
+        <span class="lab-num">06</span>
+        <div class="lab-body">
+          <div class="lab-tag-row">
+            <span class="lab-tag">Lab 06</span>
+            <span class="topic-chip chip-coral">Agentic AI</span>
+            <span class="topic-chip chip-gold">Workflow</span>
+          </div>
+          <div class="lab-title-text">Agentic AI Workflow</div>
         </div>
-        <span class="lab-chip chip-ai">AI</span>
-        <span class="arrow-icon" aria-hidden="true">&rarr;</span>
+        <div class="lab-right">
+          <span class="lab-company">n8n</span>
+          <span class="lab-arrow" aria-hidden="true">&rarr;</span>
+        </div>
       </a>
     </main>
 
     <footer class="footer">
-      <span class="footer-text">Western Washington University - Artificial Intelligence in Business</span>
-      <span class="footer-logo"><span>WWU</span> - MIS 432</span>
+      <div class="footer-left">
+        <p>MIS 432 &middot; AI in Business &middot; Western Washington University</p>
+        <p>Applied ML coursework &middot; Bellingham, WA</p>
+      </div>
+      <span class="footer-sig">WWU &middot; 2026</span>
     </footer>
   </div>
 </body>
