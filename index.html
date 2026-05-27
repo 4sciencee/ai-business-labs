@@ -48,6 +48,7 @@
     .page {
       position: relative;
       min-height: 100vh;
+      padding-top: 56px;
       overflow-x: hidden;
       background:
         radial-gradient(circle at 18% 0%, rgba(94, 179, 255, 0.12), transparent 29%),
@@ -89,8 +90,10 @@
     }
 
     .nav {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 10;
       display: flex;
       align-items: center;
