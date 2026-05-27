@@ -146,7 +146,7 @@
       max-width: 590px;
       margin-bottom: 2.4rem;
       color: var(--muted);
-      font-size: 15.5px;
+      font-size: 16.5px;
       font-weight: 300;
       line-height: 1.78;
     }
@@ -191,20 +191,21 @@
     .labs {
       max-width: 880px;
       margin: 0 auto;
-      padding: 2.5rem 2rem;
+      padding: 3rem 2rem 2.8rem;
     }
 
     .section-header {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 1.35rem;
+      margin-bottom: 1.65rem;
     }
 
     .section-title {
       color: var(--gold);
       font-family: "IBM Plex Mono", Consolas, monospace;
-      font-size: 10px;
+      font-size: 12px;
+      font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
@@ -217,10 +218,11 @@
 
     .lab-card {
       display: grid;
-      grid-template-columns: 48px minmax(0, 1fr) auto;
+      grid-template-columns: 56px minmax(0, 1fr) auto;
       align-items: center;
-      gap: 1.25rem;
-      padding: 1.1rem 0.5rem;
+      gap: 1.35rem;
+      min-height: 92px;
+      padding: 1.25rem 0.75rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.055);
       border-radius: 3px;
       color: inherit;
@@ -242,7 +244,7 @@
     .lab-num {
       color: rgba(255, 122, 69, 0.5);
       font-family: "IBM Plex Mono", Consolas, monospace;
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 600;
       text-align: center;
       transition: color 0.12s;
@@ -258,17 +260,18 @@
     }
 
     .lab-tag {
-      margin-bottom: 5px;
+      margin-bottom: 7px;
       color: rgba(246, 184, 90, 0.72);
       font-family: "IBM Plex Mono", Consolas, monospace;
-      font-size: 10px;
+      font-size: 11px;
+      font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
     }
 
     .lab-title-text {
       color: #eadce1;
-      font-size: 14px;
+      font-size: 17px;
       font-weight: 600;
       line-height: 1.35;
       transition: color 0.12s;
@@ -289,7 +292,8 @@
     .lab-company {
       color: rgba(255, 122, 69, 0.5);
       font-family: "IBM Plex Mono", Consolas, monospace;
-      font-size: 9px;
+      font-size: 10px;
+      font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       transition: color 0.12s;
@@ -297,7 +301,7 @@
 
     .lab-arrow {
       color: rgba(255, 122, 69, 0.45);
-      font-size: 14px;
+      font-size: 16px;
       transition: color 0.12s, transform 0.12s;
     }
 
@@ -393,10 +397,11 @@
       }
 
       .lab-card {
-        grid-template-columns: 34px minmax(0, 1fr);
-        gap: 0.85rem;
+        grid-template-columns: 36px minmax(0, 1fr);
+        gap: 0.9rem;
         width: 100%;
-        padding: 1rem 0;
+        min-height: 96px;
+        padding: 1.1rem 0;
       }
 
       .lab-body,
@@ -406,7 +411,8 @@
       }
 
       .lab-title-text {
-        width: min(280px, calc(100vw - 104px));
+        width: min(292px, calc(100vw - 104px));
+        font-size: 16px;
         white-space: normal !important;
         word-break: break-word;
       }
