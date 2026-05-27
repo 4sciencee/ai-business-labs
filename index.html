@@ -222,6 +222,7 @@
     }
 
     .lab-card {
+      --lab-accent: var(--blue);
       display: grid;
       grid-template-columns: 56px minmax(0, 1fr) auto;
       align-items: center;
@@ -239,9 +240,16 @@
       border-top: 1px solid rgba(255, 255, 255, 0.055);
     }
 
+    .lab-card.netflix { --lab-accent: #ff4d5d; }
+    .lab-card.spotify { --lab-accent: #35d889; }
+    .lab-card.uber { --lab-accent: #5eb3ff; }
+    .lab-card.waymo { --lab-accent: #78e2c3; }
+    .lab-card.airbnb { --lab-accent: #ff6b7a; }
+    .lab-card.agentic { --lab-accent: #a8b4ff; }
+
     .lab-card:hover,
     .lab-card:focus-visible {
-      background: rgba(94, 179, 255, 0.07);
+      background: color-mix(in srgb, var(--lab-accent) 10%, transparent);
       outline: none;
       transform: translateX(2px);
     }
@@ -295,7 +303,7 @@
     }
 
     .lab-company {
-      color: rgba(94, 179, 255, 0.72);
+      color: color-mix(in srgb, var(--lab-accent) 76%, #8a96aa);
       font-family: "IBM Plex Mono", Consolas, monospace;
       font-size: 10px;
       font-weight: 600;
@@ -305,7 +313,7 @@
     }
 
     .lab-arrow {
-      color: rgba(94, 179, 255, 0.68);
+      color: color-mix(in srgb, var(--lab-accent) 72%, #8a96aa);
       font-size: 16px;
       transition: color 0.12s, transform 0.12s;
     }
@@ -476,7 +484,7 @@
         <div class="section-line"></div>
       </div>
 
-      <a class="lab-card" href="./lab-01-netflix-ab-testing/">
+      <a class="lab-card netflix" href="./lab-01-netflix-ab-testing/">
         <span class="lab-num">01</span>
         <div class="lab-body">
           <div class="lab-tag">Lab 01: A/B Testing | Experimentation</div>
@@ -488,7 +496,7 @@
         </div>
       </a>
 
-      <a class="lab-card" href="./lab-02-spotify-recommendation-system/">
+      <a class="lab-card spotify" href="./lab-02-spotify-recommendation-system/">
         <span class="lab-num">02</span>
         <div class="lab-body">
           <div class="lab-tag">Lab 02: ML RecSys | Personalization</div>
@@ -500,7 +508,7 @@
         </div>
       </a>
 
-      <a class="lab-card" href="./lab-03-uber-forecasting/">
+      <a class="lab-card uber" href="./lab-03-uber-forecasting/">
         <span class="lab-num">03</span>
         <div class="lab-body">
           <div class="lab-tag">Lab 03: Forecasting | Operations</div>
@@ -512,7 +520,7 @@
         </div>
       </a>
 
-      <a class="lab-card" href="./lab-04-waymo-deep-learning-rl/">
+      <a class="lab-card waymo" href="./lab-04-waymo-deep-learning-rl/">
         <span class="lab-num">04</span>
         <div class="lab-body">
           <div class="lab-tag">Lab 04: Deep Learning | Reinforcement RL</div>
@@ -524,7 +532,7 @@
         </div>
       </a>
 
-      <a class="lab-card" href="./lab-05-airbnb-ai-systems/">
+      <a class="lab-card airbnb" href="./lab-05-airbnb-ai-systems/">
         <span class="lab-num">05</span>
         <div class="lab-body">
           <div class="lab-tag">Lab 05: AI Systems | Trust & Safety</div>
@@ -536,7 +544,7 @@
         </div>
       </a>
 
-      <a class="lab-card" href="./lab-06-agentic-ai-workflow/">
+      <a class="lab-card agentic" href="./lab-06-agentic-ai-workflow/">
         <span class="lab-num">06</span>
         <div class="lab-body">
           <div class="lab-tag">Lab 06: Agentic AI | Workflow</div>
