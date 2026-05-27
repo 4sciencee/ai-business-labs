@@ -106,18 +106,6 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.055);
     }
 
-    .sunset-bar {
-      display: flex;
-      gap: 3px;
-      width: fit-content;
-      margin-bottom: 2rem;
-    }
-
-    .sunset-seg {
-      height: 2px;
-      border-radius: 2px;
-    }
-
     .hero-eyebrow {
       display: flex;
       align-items: center;
@@ -214,7 +202,7 @@
     }
 
     .section-title {
-      color: var(--coral);
+      color: var(--gold);
       font-family: "IBM Plex Mono", Consolas, monospace;
       font-size: 10px;
       letter-spacing: 0.12em;
@@ -269,60 +257,13 @@
       min-width: 0;
     }
 
-    .lab-tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 5px;
-    }
-
     .lab-tag {
-      color: var(--quiet);
+      margin-bottom: 5px;
+      color: rgba(246, 184, 90, 0.72);
       font-family: "IBM Plex Mono", Consolas, monospace;
-      font-size: 9px;
+      font-size: 10px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-    }
-
-    .topic-chip {
-      border-radius: 3px;
-      padding: 3px 8px;
-      font-family: "IBM Plex Mono", Consolas, monospace;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-    }
-
-    .chip-coral {
-      border: 1px solid rgba(255, 79, 123, 0.32);
-      background: rgba(255, 79, 123, 0.12);
-      color: #ff9cb8;
-    }
-
-    .chip-sunset {
-      border: 1px solid rgba(255, 122, 69, 0.32);
-      background: rgba(255, 122, 69, 0.12);
-      color: #ffad88;
-    }
-
-    .chip-gold {
-      border: 1px solid rgba(246, 184, 90, 0.3);
-      background: rgba(246, 184, 90, 0.12);
-      color: #f6c978;
-    }
-
-    .chip-violet {
-      border: 1px solid rgba(156, 124, 255, 0.3);
-      background: rgba(156, 124, 255, 0.12);
-      color: #c4b5ff;
-    }
-
-    .chip-sky {
-      border: 1px solid rgba(123, 188, 255, 0.3);
-      background: rgba(123, 188, 255, 0.11);
-      color: #acd6ff;
     }
 
     .lab-title-text {
@@ -459,7 +400,6 @@
       }
 
       .lab-body,
-      .lab-tag-row,
       .lab-title-text {
         min-width: 0;
         max-width: 100%;
@@ -490,14 +430,6 @@
     </nav>
 
     <header class="hero">
-      <div class="sunset-bar" aria-hidden="true">
-        <div class="sunset-seg" style="width:36px; background:#ff4f7b;"></div>
-        <div class="sunset-seg" style="width:22px; background:#ff7a45;"></div>
-        <div class="sunset-seg" style="width:14px; background:#f6b85a;"></div>
-        <div class="sunset-seg" style="width:28px; background:#9c7cff;"></div>
-        <div class="sunset-seg" style="width:10px; background:#7bbcff;"></div>
-      </div>
-
       <div class="hero-eyebrow">Western Washington University</div>
 
       <h1>Applied AI<span class="line2">in Business.</span></h1>
@@ -536,11 +468,7 @@
       <a class="lab-card" href="./lab-01-netflix-ab-testing/">
         <span class="lab-num">01</span>
         <div class="lab-body">
-          <div class="lab-tag-row">
-            <span class="lab-tag">Lab 01</span>
-            <span class="topic-chip chip-coral">A/B Testing</span>
-            <span class="topic-chip chip-gold">Experimentation</span>
-          </div>
+          <div class="lab-tag">Lab 01: A/B Testing | Experimentation</div>
           <div class="lab-title-text">Netflix Artwork A/B Testing</div>
         </div>
         <div class="lab-right">
@@ -552,11 +480,7 @@
       <a class="lab-card" href="./lab-02-spotify-recommendation-system/">
         <span class="lab-num">02</span>
         <div class="lab-body">
-          <div class="lab-tag-row">
-            <span class="lab-tag">Lab 02</span>
-            <span class="topic-chip chip-sunset">ML RecSys</span>
-            <span class="topic-chip chip-sky">Personalization</span>
-          </div>
+          <div class="lab-tag">Lab 02: ML RecSys | Personalization</div>
           <div class="lab-title-text">Spotify-Style Recommendation System and Wrapped</div>
         </div>
         <div class="lab-right">
@@ -568,11 +492,7 @@
       <a class="lab-card" href="./lab-03-uber-forecasting/">
         <span class="lab-num">03</span>
         <div class="lab-body">
-          <div class="lab-tag-row">
-            <span class="lab-tag">Lab 03</span>
-            <span class="topic-chip chip-sky">Forecasting</span>
-            <span class="topic-chip chip-gold">Operations</span>
-          </div>
+          <div class="lab-tag">Lab 03: Forecasting | Operations</div>
           <div class="lab-title-text">Forecasting and the Uber Factory</div>
         </div>
         <div class="lab-right">
@@ -584,11 +504,7 @@
       <a class="lab-card" href="./lab-04-waymo-deep-learning-rl/">
         <span class="lab-num">04</span>
         <div class="lab-body">
-          <div class="lab-tag-row">
-            <span class="lab-tag">Lab 04</span>
-            <span class="topic-chip chip-violet">Deep Learning</span>
-            <span class="topic-chip chip-sunset">Reinforcement RL</span>
-          </div>
+          <div class="lab-tag">Lab 04: Deep Learning | Reinforcement RL</div>
           <div class="lab-title-text">Deep Learning, Reinforcement Learning, and Waymo</div>
         </div>
         <div class="lab-right">
@@ -600,11 +516,7 @@
       <a class="lab-card" href="./lab-05-airbnb-ai-systems/">
         <span class="lab-num">05</span>
         <div class="lab-body">
-          <div class="lab-tag-row">
-            <span class="lab-tag">Lab 05</span>
-            <span class="topic-chip chip-coral">AI Systems</span>
-            <span class="topic-chip chip-violet">Trust & Safety</span>
-          </div>
+          <div class="lab-tag">Lab 05: AI Systems | Trust & Safety</div>
           <div class="lab-title-text">Airbnb AI Systems Analysis</div>
         </div>
         <div class="lab-right">
@@ -616,11 +528,7 @@
       <a class="lab-card" href="./lab-06-agentic-ai-workflow/">
         <span class="lab-num">06</span>
         <div class="lab-body">
-          <div class="lab-tag-row">
-            <span class="lab-tag">Lab 06</span>
-            <span class="topic-chip chip-coral">Agentic AI</span>
-            <span class="topic-chip chip-gold">Workflow</span>
-          </div>
+          <div class="lab-tag">Lab 06: Agentic AI | Workflow</div>
           <div class="lab-title-text">Agentic AI Workflow</div>
         </div>
         <div class="lab-right">
