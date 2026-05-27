@@ -942,8 +942,29 @@
     .memo-body { font-size: 0.62rem; white-space: pre-wrap; }
   }
 
-    @view-transition {
-      navigation: auto;
+    body {
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .top-nav,
+    .section-nav,
+    .lab-menu-panel,
+    .nav-shell {
+      backface-visibility: hidden;
+      transform: translateZ(0);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      body {
+        animation: pageEnter 140ms ease-out both;
+      }
+
+      @keyframes pageEnter {
+        from { opacity: 0.96; }
+        to { opacity: 1; }
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -956,6 +977,12 @@
       }
     }
   </style>
+  <link rel="prefetch" href="../" data-prefetch="lab-page">
+  <link rel="prefetch" href="../lab-01-netflix-ab-testing/" data-prefetch="lab-page">
+  <link rel="prefetch" href="../lab-02-spotify-recommendation-system/" data-prefetch="lab-page">
+  <link rel="prefetch" href="../lab-04-waymo-deep-learning-rl/" data-prefetch="lab-page">
+  <link rel="prefetch" href="../lab-05-airbnb-ai-systems/" data-prefetch="lab-page">
+  <link rel="prefetch" href="../lab-06-agentic-ai-workflow/" data-prefetch="lab-page">
 </head>
 <body>
 
