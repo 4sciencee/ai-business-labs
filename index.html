@@ -18,15 +18,15 @@
       --panel: #14111a;
       --panel-soft: #191520;
       --ink: #f6f0e8;
-      --muted: #b7a9b4;
-      --quiet: #746675;
-      --line: rgba(255, 255, 255, 0.07);
-      --sunset: #c98255;
-      --coral: #c86d7a;
-      --gold: #d2aa72;
-      --rose: #d8a8b5;
-      --violet: #8d82d8;
-      --sky: #81a8d8;
+      --muted: #c5ccd8;
+      --quiet: #8792a6;
+      --line: rgba(190, 215, 255, 0.11);
+      --blue: #5eb3ff;
+      --blue-soft: #9fd0ff;
+      --cyan: #76e4ff;
+      --indigo: #8f9cff;
+      --steel: #b9c8de;
+      --gold: #d6b275;
     }
 
     html {
@@ -49,9 +49,9 @@
       min-height: 100vh;
       overflow-x: hidden;
       background:
-        radial-gradient(circle at 18% 0%, rgba(200, 109, 122, 0.08), transparent 28%),
-        radial-gradient(circle at 82% 12%, rgba(141, 130, 216, 0.06), transparent 30%),
-        linear-gradient(180deg, #0b0a10 0%, #100d14 52%, #0b0a10 100%);
+        radial-gradient(circle at 18% 0%, rgba(94, 179, 255, 0.12), transparent 29%),
+        radial-gradient(circle at 82% 12%, rgba(118, 228, 255, 0.06), transparent 30%),
+        linear-gradient(180deg, #0b0a10 0%, #0d1018 52%, #0b0a10 100%);
     }
 
     .nav {
@@ -72,8 +72,8 @@
     }
 
     .nav-brand {
-      color: var(--gold);
-      background: linear-gradient(90deg, var(--gold) 0%, var(--sunset) 42%, var(--ink) 100%);
+      color: var(--blue-soft);
+      background: linear-gradient(90deg, var(--cyan) 0%, var(--blue) 46%, var(--ink) 100%);
       background-clip: text;
       -webkit-background-clip: text;
       font-size: 13px;
@@ -84,10 +84,10 @@
     }
 
     .nav-gh {
-      border: 1px solid rgba(201, 130, 85, 0.22);
+      border: 1px solid rgba(94, 179, 255, 0.28);
       border-radius: 3px;
       padding: 5px 11px;
-      color: var(--muted);
+      color: var(--steel);
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.08em;
@@ -98,8 +98,8 @@
 
     .nav-gh:hover,
     .nav-gh:focus-visible {
-      color: var(--gold);
-      border-color: rgba(201, 130, 85, 0.48);
+      color: var(--blue-soft);
+      border-color: rgba(94, 179, 255, 0.58);
       outline: none;
       transform: translateY(-1px);
     }
@@ -116,7 +116,7 @@
       align-items: center;
       gap: 10px;
       margin-bottom: 1.4rem;
-      color: var(--gold);
+      color: var(--blue-soft);
       font-family: "IBM Plex Mono", Consolas, monospace;
       font-size: 10px;
       font-weight: 600;
@@ -129,7 +129,7 @@
       display: block;
       width: 48px;
       height: 1px;
-      background: linear-gradient(90deg, var(--gold), transparent);
+      background: linear-gradient(90deg, var(--blue), transparent);
     }
 
     h1 {
@@ -144,7 +144,7 @@
 
     h1 .line2 {
       display: block;
-      color: var(--gold);
+      color: var(--blue-soft);
     }
 
     .hero-desc {
@@ -160,16 +160,16 @@
       display: flex;
       width: fit-content;
       max-width: 100%;
-      border: 1px solid rgba(255, 255, 255, 0.075);
+      border: 1px solid rgba(190, 215, 255, 0.13);
       border-radius: 4px;
       overflow: hidden;
-      background: rgba(255, 255, 255, 0.025);
+      background: rgba(94, 179, 255, 0.035);
     }
 
     .meta-cell {
       min-width: 112px;
       padding: 12px 18px;
-      border-right: 1px solid rgba(255, 255, 255, 0.065);
+      border-right: 1px solid rgba(190, 215, 255, 0.11);
     }
 
     .meta-cell:last-child {
@@ -186,7 +186,7 @@
     }
 
     .meta-val {
-      color: var(--gold);
+      color: var(--blue-soft);
       font-family: "IBM Plex Mono", Consolas, monospace;
       font-size: 13px;
       font-weight: 600;
@@ -207,7 +207,7 @@
     }
 
     .section-title {
-      color: var(--gold);
+      color: var(--blue-soft);
       font-family: "IBM Plex Mono", Consolas, monospace;
       font-size: 12px;
       font-weight: 600;
@@ -241,13 +241,13 @@
 
     .lab-card:hover,
     .lab-card:focus-visible {
-      background: rgba(201, 130, 85, 0.055);
+      background: rgba(94, 179, 255, 0.07);
       outline: none;
       transform: translateX(2px);
     }
 
     .lab-num {
-      color: rgba(201, 130, 85, 0.58);
+      color: rgba(94, 179, 255, 0.7);
       font-family: "IBM Plex Mono", Consolas, monospace;
       font-size: 13px;
       font-weight: 600;
@@ -257,7 +257,7 @@
 
     .lab-card:hover .lab-num,
     .lab-card:focus-visible .lab-num {
-      color: var(--sunset);
+      color: var(--cyan);
     }
 
     .lab-body {
@@ -266,7 +266,7 @@
 
     .lab-tag {
       margin-bottom: 7px;
-      color: rgba(210, 170, 114, 0.78);
+      color: rgba(159, 208, 255, 0.86);
       font-family: "IBM Plex Mono", Consolas, monospace;
       font-size: 11px;
       font-weight: 600;
@@ -275,7 +275,7 @@
     }
 
     .lab-title-text {
-      color: #efe6e2;
+      color: #f5f8ff;
       font-size: 17px;
       font-weight: 600;
       line-height: 1.35;
@@ -295,7 +295,7 @@
     }
 
     .lab-company {
-      color: rgba(201, 130, 85, 0.58);
+      color: rgba(94, 179, 255, 0.72);
       font-family: "IBM Plex Mono", Consolas, monospace;
       font-size: 10px;
       font-weight: 600;
@@ -305,7 +305,7 @@
     }
 
     .lab-arrow {
-      color: rgba(201, 130, 85, 0.5);
+      color: rgba(94, 179, 255, 0.68);
       font-size: 16px;
       transition: color 0.12s, transform 0.12s;
     }
@@ -314,7 +314,7 @@
     .lab-card:focus-visible .lab-company,
     .lab-card:hover .lab-arrow,
     .lab-card:focus-visible .lab-arrow {
-      color: var(--sunset);
+      color: var(--cyan);
     }
 
     .lab-card:hover .lab-arrow,
@@ -335,7 +335,7 @@
 
     .footer-left p,
     .footer-sig {
-      color: rgba(184, 154, 163, 0.62);
+      color: rgba(197, 204, 216, 0.68);
       font-family: "IBM Plex Mono", Consolas, monospace;
       font-size: 10px;
       letter-spacing: 0.04em;
@@ -343,7 +343,7 @@
     }
 
     .footer-sig {
-      color: rgba(201, 130, 85, 0.7);
+      color: rgba(94, 179, 255, 0.78);
       white-space: nowrap;
     }
 
