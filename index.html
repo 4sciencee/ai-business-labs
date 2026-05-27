@@ -14,19 +14,19 @@
     }
 
     :root {
-      --bg: #0d0a12;
-      --panel: #15101a;
-      --panel-soft: #19121d;
-      --ink: #fff7f0;
-      --muted: #b89aa3;
-      --quiet: #7f6470;
+      --bg: #0b0a10;
+      --panel: #14111a;
+      --panel-soft: #191520;
+      --ink: #f6f0e8;
+      --muted: #b7a9b4;
+      --quiet: #746675;
       --line: rgba(255, 255, 255, 0.07);
-      --sunset: #ff7a45;
-      --coral: #ff4f7b;
-      --gold: #f6b85a;
-      --rose: #ff8fb0;
-      --violet: #9c7cff;
-      --sky: #7bbcff;
+      --sunset: #c98255;
+      --coral: #c86d7a;
+      --gold: #d2aa72;
+      --rose: #d8a8b5;
+      --violet: #8d82d8;
+      --sky: #81a8d8;
     }
 
     html {
@@ -49,9 +49,9 @@
       min-height: 100vh;
       overflow-x: hidden;
       background:
-        radial-gradient(circle at 18% 0%, rgba(255, 79, 123, 0.12), transparent 28%),
-        radial-gradient(circle at 82% 12%, rgba(246, 184, 90, 0.08), transparent 30%),
-        linear-gradient(180deg, #0d0a12 0%, #100b15 52%, #0d0a12 100%);
+        radial-gradient(circle at 18% 0%, rgba(200, 109, 122, 0.08), transparent 28%),
+        radial-gradient(circle at 82% 12%, rgba(141, 130, 216, 0.06), transparent 30%),
+        linear-gradient(180deg, #0b0a10 0%, #100d14 52%, #0b0a10 100%);
     }
 
     .nav {
@@ -61,7 +61,7 @@
       height: 56px;
       padding: 0 2rem;
       border-bottom: 1px solid var(--line);
-      background: rgba(13, 10, 18, 0.78);
+      background: rgba(11, 10, 16, 0.84);
       backdrop-filter: blur(14px);
     }
 
@@ -72,7 +72,7 @@
     }
 
     .nav-brand {
-      color: var(--gold);
+      color: var(--rose);
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.08em;
@@ -80,7 +80,7 @@
     }
 
     .nav-gh {
-      border: 1px solid rgba(255, 122, 69, 0.18);
+      border: 1px solid rgba(201, 130, 85, 0.22);
       border-radius: 3px;
       padding: 5px 11px;
       color: var(--muted);
@@ -94,8 +94,8 @@
 
     .nav-gh:hover,
     .nav-gh:focus-visible {
-      color: var(--sunset);
-      border-color: rgba(255, 122, 69, 0.42);
+      color: var(--gold);
+      border-color: rgba(201, 130, 85, 0.48);
       outline: none;
       transform: translateY(-1px);
     }
@@ -112,7 +112,7 @@
       align-items: center;
       gap: 10px;
       margin-bottom: 1.4rem;
-      color: var(--sunset);
+      color: var(--gold);
       font-family: "IBM Plex Mono", Consolas, monospace;
       font-size: 10px;
       font-weight: 600;
@@ -125,7 +125,7 @@
       display: block;
       width: 48px;
       height: 1px;
-      background: linear-gradient(90deg, var(--sunset), transparent);
+      background: linear-gradient(90deg, var(--gold), transparent);
     }
 
     h1 {
@@ -140,7 +140,7 @@
 
     h1 .line2 {
       display: block;
-      color: var(--sunset);
+      color: var(--gold);
     }
 
     .hero-desc {
@@ -237,13 +237,13 @@
 
     .lab-card:hover,
     .lab-card:focus-visible {
-      background: rgba(255, 122, 69, 0.055);
+      background: rgba(201, 130, 85, 0.055);
       outline: none;
       transform: translateX(2px);
     }
 
     .lab-num {
-      color: rgba(255, 122, 69, 0.5);
+      color: rgba(201, 130, 85, 0.58);
       font-family: "IBM Plex Mono", Consolas, monospace;
       font-size: 13px;
       font-weight: 600;
@@ -262,7 +262,7 @@
 
     .lab-tag {
       margin-bottom: 7px;
-      color: rgba(246, 184, 90, 0.72);
+      color: rgba(210, 170, 114, 0.78);
       font-family: "IBM Plex Mono", Consolas, monospace;
       font-size: 11px;
       font-weight: 600;
@@ -271,7 +271,7 @@
     }
 
     .lab-title-text {
-      color: #eadce1;
+      color: #efe6e2;
       font-size: 17px;
       font-weight: 600;
       line-height: 1.35;
@@ -281,7 +281,7 @@
 
     .lab-card:hover .lab-title-text,
     .lab-card:focus-visible .lab-title-text {
-      color: #fff7f0;
+      color: var(--ink);
     }
 
     .lab-right {
@@ -291,7 +291,7 @@
     }
 
     .lab-company {
-      color: rgba(255, 122, 69, 0.5);
+      color: rgba(201, 130, 85, 0.58);
       font-family: "IBM Plex Mono", Consolas, monospace;
       font-size: 10px;
       font-weight: 600;
@@ -301,7 +301,7 @@
     }
 
     .lab-arrow {
-      color: rgba(255, 122, 69, 0.45);
+      color: rgba(201, 130, 85, 0.5);
       font-size: 16px;
       transition: color 0.12s, transform 0.12s;
     }
@@ -339,7 +339,7 @@
     }
 
     .footer-sig {
-      color: rgba(255, 122, 69, 0.65);
+      color: rgba(201, 130, 85, 0.7);
       white-space: nowrap;
     }
 
