@@ -114,7 +114,7 @@
       transform: scale(1.06);
     }
 
-    
+
     /* NAV CONSISTENCY OVERRIDE */
     .top-nav {
       padding-left: 24px;
@@ -875,6 +875,20 @@
         min-width: 0;
         max-width: min(260px, calc(100vw - 124px));
         overflow-wrap: break-word;
+      }
+    }
+
+    @view-transition {
+      navigation: auto;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>

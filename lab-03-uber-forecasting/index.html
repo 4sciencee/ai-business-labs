@@ -123,7 +123,7 @@
     transform: scale(1.06);
   }
 
-  
+
     /* NAV CONSISTENCY OVERRIDE */
     body > nav {
       padding-left: 24px;
@@ -941,7 +941,21 @@
     }
     .memo-body { font-size: 0.62rem; white-space: pre-wrap; }
   }
-</style>
+
+    @view-transition {
+      navigation: auto;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
 

@@ -112,7 +112,7 @@
       transform: scale(1.06);
     }
 
-    
+
     /* NAV CONSISTENCY OVERRIDE */
     .top-nav {
       padding-left: 24px;
@@ -795,6 +795,20 @@
       }
     }
 
+
+    @view-transition {
+      navigation: auto;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -908,14 +922,14 @@
     <div class="section-title" id="results">Experiment Results</div>
     <div class="chart-grid">
       <div class="chart-card">
-        <img src="results/ctr_comparison.png" alt="CTR Comparison Chart" />
+        <img src="results/ctr_comparison.png" alt="CTR Comparison Chart" loading="lazy" decoding="async" />
         <div class="chart-caption">
           Figure 1 - Click-Through Rate comparison between Artwork A (control)
           and Artwork B (treatment).
         </div>
       </div>
       <div class="chart-card">
-        <img src="results/significance_test.png" alt="Statistical Significance Chart" />
+        <img src="results/significance_test.png" alt="Statistical Significance Chart" loading="lazy" decoding="async" />
         <div class="chart-caption">
           Figure 2 - P-value vs. significance threshold (alpha = 0.05).
           A p-value below 0.05 confirms the result is statistically significant.
